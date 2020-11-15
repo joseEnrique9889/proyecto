@@ -25,7 +25,7 @@
         <th scope="row">{{ $role->id }}</th>
         <td>{{ $role->name }}</td>
         <td>{{ $role->description }}</td>
-        <td>{{ $role['full-access'] }}</td>
+        <td>{{ $role['full-access'] }}</td> 
 
         
         <td>
