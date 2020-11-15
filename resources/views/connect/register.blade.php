@@ -48,7 +48,7 @@
 	<div class="input-group mb-2">
 		<div class="input-group-prepend">
 			<div class="input-group-text"><i class="fas fa-unlock"></i></div>
-		</div>
+		</div> 
 
 	{!! Form::password('password', ['class' => 'form-control', 'required']) !!}
 	</div>
