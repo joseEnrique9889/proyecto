@@ -21,7 +21,7 @@
        <input type="text" class="form-control" id="name" placeholder="nombre del rol"
        name="name" 
        value="{{ old('name') }}"
-       >
+       > 
   </div>
 
    <div class="form-group">
