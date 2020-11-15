@@ -13,7 +13,7 @@
 
 	<div class="inside">
 	{!! Form::open(['url' => '/login']) !!}
-	<center><h4 for="email">Correo Electronico:</h4></center>
+	<center><h4 for="email">CORREO ELECTRONICO:</h4></center>
 	<div class="input-group mb-2">
 		<div class="input-group-prepend">
 			<div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
@@ -21,7 +21,7 @@
 
 	{!! Form::email('email', null, ['class' => 'form-control']) !!}
 	</div>
-	<center><h4 for="email" class="mtop16">Contraseña:</h4></center>
+	<center><h4 for="email" class="mtop16">CONTRASEÑA:</h4></center>
 	<div class="input-group mb-2">
 		<div class="input-group-prepend">
 			<div class="input-group-text"><i class="fas fa-unlock"></i></div>
@@ -50,8 +50,8 @@
 	</div>
 	@endif
 	<div class="footer mtop16">
-		<a href="{{ url('/register') }}">No tienes una cuenta?, Registrate</a>
-		<a href="{{ url('/recover') }}">olvide mi contraseña</a>
+		<a href="{{ url('/register') }}">NO TIENES UNA CUENTA?, RESGITRATE</a>
+		<a href="{{ url('/recover') }}">OLVIDE MI CONTRASEÑA</a>
 	</div>
 	</div>
 	
