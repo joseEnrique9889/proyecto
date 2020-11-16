@@ -11,6 +11,7 @@
 			</div>
 			<div class="email">{{ Auth::user()->email }}</div>
 		</div>
+
 	</div>
 	<div class="main">
 		<ul>

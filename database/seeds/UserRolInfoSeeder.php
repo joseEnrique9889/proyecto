@@ -30,13 +30,30 @@ class UserRolInfoSeeder extends Seeder
         	$useradmin->delete();
         }
     	$useradmin= User::create([
-    	'name' 	   => 'supervisor',
-    	'apellido' => 'gomez',
+    	'name' 	   => 'Jose Enrique',
+    	'apellido' => 'Toledo Felipe',
       'imagen' => 'uploads/usuario/supervisor.png',
         'email'	   => 'supervisor@admin.com',
         'password' => Hash::make('supervisor')
 
     	]);
+
+      $userencargado= User::create([
+      'name'     => 'Abel Alejandro',
+      'apellido' => 'Rojas Vazquez',
+      'imagen' => 'uploads/usuario/encargado.jpg',
+      'email'    => 'encargado@admin.com',
+      'password' => Hash::make('encargado')
+
+      ]);
+
+      $usercontador = User::create([
+        'name' => 'Darwin Alfredo',
+        'apellido' => 'Trujillo Hernandez',
+        'imagen' => 'uploads/usuario/contador.jpg',
+        'email' => 'contador@admin.com',
+        'password' => Hash::make('contador')
+      ]);
 
     	//rol supervisor.
     	$roladmin=Role::create([
@@ -45,6 +62,20 @@ class UserRolInfoSeeder extends Seeder
   		'description' => 'Administrador',
  		  'full-access' => 'yes',
 		]);
+
+      $rolaencargado=Role::create([
+      'name' => 'encargado',
+      'slug' => 'encargado',
+      'description' => 'se encarga de la consigancion de producto',
+      'full-access' => 'no',
+    ]);
+
+      $rolcontador=Role::create([
+      'name' => 'contador',
+      'slug' => 'contador',
+      'description' => 'se encarga de lo financiero',
+      'full-access' => 'no',
+    ]);
 
         //rol cliente
       $roluser=Role::create([
@@ -55,7 +86,8 @@ class UserRolInfoSeeder extends Seeder
     ]);
         //creacion de la realicion de la tabla de supervisor a la rol administrador
         $useradmin->roles()->sync([ $roladmin->id ]);
-
+        $userencargado->roles()->sync([ $rolaencargado->id]);
+        $usercontador->roles()->sync([ $rolcontador->id]);
 
         //permisos
         $permission_all = [];

@@ -38,7 +38,7 @@ class ConnectController extends Controller
     	else:
 
     		if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
-    			return redirect('/');
+    			return redirect('/categoria');
     		else:
     			return back()->with('message', 'Correo electronico o contraseña erronea')->with('typealert', 'danger');
     		endif;
@@ -85,7 +85,7 @@ class ConnectController extends Controller
             $user['imagen']=$request->file('imagen')->store('uploads/usuario','public');
         }
            	if($user->save()):
-                $user->roles()->sync([ 2 ]);
+                $user->roles()->sync([ 4 ]);
     			return redirect('/login')->with('message', 'Su usuario se creo con exito ahora puede iniciar sesion')->with('typealert', 'success');
     		endif;
     		

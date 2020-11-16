@@ -6,10 +6,7 @@
   <div class="panel shadow">
   <div class="inside">
     <div class="card-body">
-  @include('coustom.message')
-   
-
- </div>
+  
     <form action="{{ url('/categoria') }}" method="POST" enctype="multipart/form-data">
       @csrf
     <center><h3>Nueva Categoria</h3></center>

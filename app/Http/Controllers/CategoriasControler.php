@@ -50,7 +50,8 @@ class CategoriasControler extends Controller
        Categoria::insert($datosCategorias);
         //return response()->json($datosCategorias);
         //return view('supervisor.categoria.index');
-       return redirect('categoria');
+       return redirect('categoria')->with('status_success','Categoria Careada Correctamente');
+
     }
 
     /**
@@ -105,7 +106,7 @@ class CategoriasControler extends Controller
 
         $categoria= Categoria::findOrFail($id);
 
-        return view('supervisor.categoria.edit',compact('categoria'));
+        return view('supervisor.categoria.edit',compact('categoria'))->with('status_success','Rol Guardado Correctamente');
     }
 
     /**

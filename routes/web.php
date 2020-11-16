@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Gate;
 */
 Route::get('/', function () {
     return view('welcome');
+
+    
 });
 
 //pruebas

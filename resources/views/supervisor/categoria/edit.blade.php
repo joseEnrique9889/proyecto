@@ -5,6 +5,7 @@
   <div class="panel shadow">
     
   <div class="inside">
+    @include('coustom.message')
    <form action="{{ url('/categoria/'.$categoria->id) }}" method="POST" enctype="multipart/form-data">
      @csrf
       @method('PUT')

@@ -3,6 +3,7 @@
 @section('content')
 <div class="panel shadow">
   <div class="inside">
+      @include('coustom.message')
     <table class="table">
   <thead> 
  <td colspan="7"><center><label>AGREGAR CATEGORIAS</div></label></center></td>
