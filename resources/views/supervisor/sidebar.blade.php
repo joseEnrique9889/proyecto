@@ -24,12 +24,18 @@
 		<ul>
 
 			<li><a href="{{ url('/tablero')}}"><i class="fas fa-table"></i>Tablero</a></i>
-			<li><a href="{{ url('/categoria')}}"><i class="fas fa-users"></i>Categoria</a></i>
+				@can('haveaccess','categoria.index')
+			<li><a href="{{ url('/categoria')}}"><i class="fas fa-table"></i>Categoria</a></i>
+				@endcan
+				@can('haveaccess','producto.index')
+			<li><a href="{{ url('/producto')}}"><i class="fas fa-poll-h"></i>Productos Registrado</a></i>
+				@endcan
+				
 				@can('haveaccess','user.index')
-			<li><a href="{{ route('user.index')}}"><i class="fas fa-users"></i>Crear Usuario</a></i>
+			<li><a href="{{ route('user.index')}}"><i class="fas fa-users"></i>Usuarios Registrado</a></i>
 				@endcan
 				@can('haveaccess','role.index')
-			<li><a href="{{ route('role.index')}}"><i class="fas fa-database"></i>Actualizacion de datos</a></i>
+			<li><a href="{{ route('role.index')}}"><i class="fas fa-database"></i>Lista de Roles</a></i>
 				@endcan
 			<li><a href="{{ url('/restPassword')}}"><i class="fas fa-key"></i>Restablecer contraseña</a></i>
 			<li><a href="{{ url('/historia')}}"><i class="fas fa-history"></i>historial del vendedor</a></i>

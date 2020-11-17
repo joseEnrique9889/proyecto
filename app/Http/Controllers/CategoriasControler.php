@@ -16,6 +16,7 @@ class CategoriasControler extends Controller
      public function index()
     {
         //
+        $this->authorize('haveaccess','categoria.index');
         $datos['categorias']=Categoria::paginate(5);
 
       return view('supervisor.categoria.index',$datos);
@@ -28,6 +29,8 @@ class CategoriasControler extends Controller
      */
     public function create()
     {
+        $this->authorize('haveaccess','categoria.create');
+
         return view('supervisor.categoria.create');
     }
 
@@ -39,6 +42,8 @@ class CategoriasControler extends Controller
      */
     public function store(Request $request)
     {
+
+         $this->authorize('haveaccess','categoria.create');
 
        // $datosCategorias=request()->all();
         $datosCategorias=request()->except('_token');
@@ -62,6 +67,7 @@ class CategoriasControler extends Controller
      */
     public function show($id)
     {
+        $this->authorize('haveaccess','categoria.show');
         $categoria= Categoria::findOrFail($id);
 
        return view('supervisor.categoria.show',compact('categoria'));
@@ -75,6 +81,7 @@ class CategoriasControler extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('haveaccess','categoria.edit');
         //devuelve todo el valor del id.
         $categoria= Categoria::findOrFail($id);
 
@@ -91,6 +98,7 @@ class CategoriasControler extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->authorize('haveaccess','categoria.edit');
         $datosCategorias=request()->except(['_token','_method']);
 
        if ($request->hasFile('imagen')) {
@@ -117,6 +125,7 @@ class CategoriasControler extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('haveaccess','categoria.destroy');
         //
         $categoria= Categoria::findOrFail($id);
 

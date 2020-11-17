@@ -36,18 +36,24 @@
     <td >{{ $producto->activo}}</td>
 
      <td>
+      @can('haveaccess','producto.edit')
       <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
+      @endcan
     </td>
 
-        <td><a href="{{ url('/producto/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
-
+        <td>
+          @can('haveaccess','producto.show')
+          <a href="{{ url('/producto/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
+          @endcan
         </td>
          <td>
+          @can('haveaccess','producto.destroy')
            <form method="post" action="{{ url('/producto/'.$producto->id) }}">
             {{csrf_field() }}
              {{ method_field('DELETE') }}
              <button type="submit" class="btn btn-large btn-danger" onclick="return confirm('desea Eliminar este elemento?'); ">Eliminar</button>
            </form>
+           @endcan
          </td>
     </tr>
 
@@ -61,7 +67,9 @@
 
 </table>
 <div class="boton">
+  @can('haveaccess','producto.create')
 <center><a href="{{ url('/producto/create') }}" role="button" class="btn btn-large btn-info" data-toggle="modal">crear</a></center>
+@endcan
 </div>
 </div>
   </div>

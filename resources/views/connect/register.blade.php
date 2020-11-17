@@ -30,7 +30,7 @@
 	<label for="imagen" class="mtop16">Foto:</label>
 	<div class="input-group mb-2">
 		<div class="input-group-prepend">
-			<div class="input-group-text"><i class="fas fa-user"></i></div>
+			<div class="input-group-text"><i class="fas fa-camera-retro"></i></div>
 		</div>
 
 	{!! Form::file('imagen', null, ['class' => 'form-control', 'required']) !!}

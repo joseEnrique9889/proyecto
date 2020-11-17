@@ -127,7 +127,7 @@ class UserRolInfoSeeder extends Seeder
  		//permisos de los usuarios
  		$permission = Permission::create([
     	'name' => 'lista de user',
-		'slug' => 'user.index',
+		  'slug' => 'user.index',
    		'description' => 'lista de user',
    		]);
    		$permission_all[] = $permission->id;
@@ -165,6 +165,75 @@ class UserRolInfoSeeder extends Seeder
     'slug' => 'userpropio.edit',
       'description' => 'Editar propio user',
       ]);
+
+
+    //permisos de categoria
+    $permission = Permission::create([
+      'name' => 'lista de categoria',
+      'slug' => 'categoria.index',
+      'description' => 'lista de categoria',
+      ]);
+      $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'ver categoria',
+      'slug' => 'categoria.show',
+      'description' => 'un usuario puede ver la lista de categoria',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'crear categoria',
+      'slug' => 'categoria.create',
+      'description' => 'un usuario puede ver la lista de categoria',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'Editar categoria',
+      'slug' => 'categoria.edit',
+      'description' => 'Editar  categoria',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'Destroy categoria',
+      'slug' => 'categoria.destroy',
+      'description' => 'eliminacion de categoria',
+      ]);
+    $permission_all[] = $permission->id;
+
+
+     //permisos de Productos
+    $permission = Permission::create([
+      'name' => 'lista de Productos',
+      'slug' => 'producto.index',
+      'description' => 'lista de producto',
+      ]);
+      $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'ver producto',
+      'slug' => 'producto.show',
+      'description' => 'un usuario puede ver un producto en especifico',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'crear producto',
+      'slug' => 'producto.create',
+      'description' => 'un usuario puede crear un producto',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'Editar Productos',
+      'slug' => 'producto.edit',
+      'description' => 'Editar producto',
+      ]);
+    $permission_all[] = $permission->id;
+    $permission = Permission::create([
+      'name' => 'Destroy producto',
+      'slug' => 'producto.destroy',
+      'description' => 'eliminacion de producto',
+      ]);
+    $permission_all[] = $permission->id;
+
+
+
 
     }
 }

@@ -1,6 +1,11 @@
 @extends('layout.master')
 @section('title', 'ROLES')
 @section('content')
+@section('breadcrumb')
+<li class="breadcrumb-item">
+  <a href="{{ url('/role/') }}"><i class="fas fa-users"></i>Ver rol</h2></a>
+</li>
+@endsection
 <div class="panel shadow">
   <div class="inside">
  <CENTER><h2>VISTA DE ROL</h2></CENTER>
