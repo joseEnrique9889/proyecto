@@ -5,8 +5,8 @@
   <div class="inside">
     <table class="table">
   <thead> 
- <td colspan="12"><center><label>Lista de Productos</div></label></center></td>
-    <tr>
+ <td colspan="13"><center><label>Lista de Productos</div></label></center></td>
+    <tr >
       <th scope="col">id</th>
       <th scope="col">Nombre</th>
       <th scope="col">categoria</th>
@@ -15,17 +15,20 @@
       <th scope="col">cantidad</th>
       <th scope="col">precio</th>
       <th scope="col">estado</th>
-      <th scope="col">activo</th>
+      <th scope="col">consecionado</th>
       <th colspan="3"><CENTER>ACCION</CENTE></th>
     </tr>
 
   </thead>
   <tbody class="body1">
     @forelse($productos as $producto)
-    <tr>
+
+    <tr @if ($producto->concesionado!=1)
+     class="text-danger"
+      @endif>
       <th scope="row">{{ $producto->id }}</th>
     <td scope="row">{{ $producto->nombre}}</td>
-    <td >{{ $producto->categoria_id }}</td>
+    <td >{{ $producto->categoria->nombre }}</td>
     <td scope="row">{{ $producto->descripcion}}</td>
     <td >
       <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="" width="200">
@@ -33,7 +36,8 @@
     <td >{{ $producto->cantidad}}</td>
     <td >{{ $producto->precio}}</td>
     <td >{{ $producto->estado}}</td>
-    <td >{{ $producto->activo}}</td>
+   
+    <td>{{ $producto->concesionado}}</td>
 
      <td>
       @can('haveaccess','producto.edit')

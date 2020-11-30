@@ -47,10 +47,7 @@
     <input type="text" name="estado" class="form-control" id="cantidad" value="{{ $producto->estado }}">
   </div>
 
-<div class="form-group">
-    <label for="exampleFormControlInput1">Activo</label>
-    <input type="text" name="activo" class="form-control" id="cantidad" value="{{ $producto->activo }}">
-  </div>
+
 
  <center><input class="btn btn-success" type="submit" value="Enviar"></center> 
 </form>

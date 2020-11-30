@@ -23,9 +23,11 @@ class CreateProductosTable extends Migration
             $table->decimal('precio',12,2)->default(0);
             $table->string('estado');
             //$table->string('categoria');
-            $table->char('activo',2);
+            //$table->char('activo',2);
+            $table->tinyInteger('concesionado')->default(0);
             $table->timestamps();
 
+             $table->foreignId('user_id')->references('id')->on('users');
              $table->foreign('categoria_id')->references('id')->on('categorias');
         });
 

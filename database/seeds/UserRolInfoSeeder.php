@@ -77,6 +77,7 @@ class UserRolInfoSeeder extends Seeder
       'full-access' => 'no',
     ]);
 
+
         //rol cliente
       $roluser=Role::create([
       'name' => 'Cliente',
@@ -231,9 +232,6 @@ class UserRolInfoSeeder extends Seeder
       'description' => 'eliminacion de producto',
       ]);
     $permission_all[] = $permission->id;
-
-
-
 
     }
 }

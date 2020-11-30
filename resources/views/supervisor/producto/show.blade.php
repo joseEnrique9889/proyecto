@@ -44,10 +44,6 @@
     <input type="text" name="estado" class="form-control" id="cantidad" value="{{ $producto->estado }}" disabled>
   </div>
 
-<div class="form-group">
-    <label for="exampleFormControlInput1">Activo</label>
-    <input type="text" name="activo" class="form-control" id="cantidad" value="{{ $producto->activo }}" disabled>
-  </div>
 
  <CENTER><a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a></CENTER>
 </form>

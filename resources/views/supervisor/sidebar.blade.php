@@ -6,10 +6,11 @@
 		<div class="user">
 			<span class="subttitle">Hola:</span>
 			<div class="name">
-				{{ Auth::user()->name }} {{ Auth::user()->apellido }}
+				{{ Auth::user()->name }} {{ Auth::user()->apellido }} 
 				<a href="{{ url('/logout') }}" data-toggle="tooltip" data-placement="top" title="Salir"><i class="fas fa-sign-out-alt"></i></a>
 			</div>
 			<div class="email">{{ Auth::user()->email }}</div>
+			
 		</div>
 
 	</div>

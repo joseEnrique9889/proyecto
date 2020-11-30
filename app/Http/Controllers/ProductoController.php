@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Producto;
+use App\Categoria;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
@@ -13,13 +16,18 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
    public function index()
     {
 
         $this->authorize('haveaccess','producto.index');
-        $datos['productos']=Producto::paginate(5);
+        
+        //$datos['productos']=Producto::paginate(5);
+        $productos = Producto::where('user_id',Auth::id())->get();
 
-      return view('supervisor.producto.index',$datos);
+      return view('supervisor.producto.index',compact('productos'));
     }
 
     /**
@@ -29,8 +37,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
+        $usuarios = User::where('id',Auth::id())->get();
+        $cat= Categoria::orderBy('nombre')->get();
         $this->authorize('haveaccess','producto.create');
-        return view('supervisor.producto.create');
+        return view('supervisor.producto.create',compact('cat','usuarios'));
     }
 
     /**

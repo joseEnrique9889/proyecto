@@ -13,13 +13,16 @@ class CategoriasControler extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct(){
+        $this->middleware('auth');
+    }
      public function index()
     {
         //
         $this->authorize('haveaccess','categoria.index');
-        $datos['categorias']=Categoria::paginate(5);
+        $categorias=Categoria::orderBy('id','Asc')->paginate(10);
 
-      return view('supervisor.categoria.index',$datos);
+      return view('supervisor.categoria.index',compact('categorias'));
     }
 
     /**

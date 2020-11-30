@@ -9,7 +9,7 @@
 <div class="panel shadow">
   <div class="inside">
       @include('coustom.message')
-    <table class="table">
+    <table class="table table-hover">
   <thead> 
  <td colspan="7"><center><label>AGREGAR CATEGORIAS</div></label></center></td>
     <tr>
@@ -62,6 +62,7 @@
   
 
 </table>
+{{ $categorias->links() }}
 <div class="boton">
   @can('haveaccess','categoria.create')
 <center><a href="{{ url('/categoria/create') }}" role="button" class="btn btn-large btn-info" data-toggle="modal">crear</a></center>
