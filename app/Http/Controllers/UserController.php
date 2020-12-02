@@ -74,7 +74,7 @@ class UserController extends Controller
     public function edit(User $user)
     {       
         //return $role;
-        $this->authorize('update', [$user, ['user.edit','userpropio.edit'] ]);
+       $this->authorize('update', [$user, ['user.edit','userpropio.edit'] ]);
 
         $roles= Role::orderBy('name')->get();
 

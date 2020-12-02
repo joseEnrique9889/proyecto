@@ -29,25 +29,25 @@
 
         
         <td>
-          @can('haveaccess','role.show')
+         
           <a class="btn btn-success" href="{{ route('role.show',$role->id)}}">Ver</a>
-          @endcan
+         
         </td>
 
         <td>
-          @can('haveaccess','role.edit')
+          
           <a class="btn btn-warning" href="{{ route('role.edit',$role->id)}}">Editar</a>
-          @endcan
+         
         </td>
         
         <td>
-          @can('haveaccess','role.destroy')
+          
           <form action="{{ route('role.destroy',$role->id)}}" method="POST">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger">Eliminar</button>
           </form>
-        @endcan
+        
          </tr>
       @endforeach
    

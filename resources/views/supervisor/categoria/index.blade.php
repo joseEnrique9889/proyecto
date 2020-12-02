@@ -31,24 +31,24 @@
       <img src="{{ asset('storage').'/'.$categoria->imagen}}" alt="" width="300">
     </td>
      <td>
-      @can('haveaccess','categoria.edit')
+      
       <a href="{{ url('/categoria/'.$categoria->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
-      @endcan
+      
     </td>
 
         <td>
-           @can('haveaccess','categoria.show')
+         
           <a href="{{ url('/categoria/'.$categoria->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
-            @endcan
+          
         </td>
          <td>
-          @can('haveaccess','categoria.destroy')
+         
            <form method="post" action="{{ url('/categoria/'.$categoria->id) }}">
             {{csrf_field() }}
              {{ method_field('DELETE') }}
              <button type="submit" class="btn btn-large btn-danger" onclick="return confirm('desea Eliminar este elemento?'); ">Eliminar</button>
            </form>
-           @endcan
+           
          </td>
     </tr>
 
@@ -64,9 +64,9 @@
 </table>
 {{ $categorias->links() }}
 <div class="boton">
-  @can('haveaccess','categoria.create')
+  
 <center><a href="{{ url('/categoria/create') }}" role="button" class="btn btn-large btn-info" data-toggle="modal">crear</a></center>
-@endcan
+
 </div>
 </div>
   </div>

@@ -19,20 +19,31 @@
 </head>
 <body class="fondo">
 	<div class="wrapper">
+	@can('haveaccess','sidebar.show')
 	<div class="col1">@include('supervisor.sidebar')</div>
+	@endcan
 	<div class="col2">
 		<nav class="navbar navbar-expand-lg shadow">
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav">
+					
 					<li class="nav-item">
-						<h2 href="{{ url('/admin') }}" class="nav-link">MERCADO IXHUATAN</h2>
+						<h2 href="{{ url('/') }}" class="nav-link">MERCADO IXHUATAN</h2>
 					</li>
+					
+					
 				</ul>
+
 				
+        </ul>
 			</div>
 		</nav>
+		
+		
 
+@can('haveaccess','sidebar.show')
 		<div class="page">
+			
 			<div class="container-fluid">
 				<nav aria-label="breadcrumb shadow">
 					<ol class="breadcrumb">
@@ -43,8 +54,9 @@
 					@show
 					</ol>
 				</nav>
-
+				
 			</div>
+			@endcan
 	@section('content')
 	@show
 		</div>

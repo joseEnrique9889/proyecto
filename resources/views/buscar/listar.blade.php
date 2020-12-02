@@ -6,6 +6,7 @@
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
                 @forelse($productos as $producto)
+                   @if ($producto->concesionado!=0)
 
                 <div class="card mtop16" style="width: 25rem;">
                   <img class="card-img-top" src="{{ asset('storage').'/'.$producto->imagen}}" alt="Card image cap" width="700">
@@ -21,9 +22,14 @@
           <a href="#" class="btn btn-success">comprar</a>
         
 
+
   </div>
-</div>                 
+
+</div>        
+   @endif 
+
                    @empty  
+
                    <h3>Sin Productos Registrado En Esta Categoria</h3>            
                 @endforelse
                 

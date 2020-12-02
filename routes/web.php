@@ -19,6 +19,10 @@ Route::get('/','HomeController@getCat');
 Route::get('/listaProdu','HomeController@getProd');
 
 Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
+
+Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']])
+;
+Route::get('Revisiones/{Revisiones}/show','RevisarControler@show');
 //pruebas
 Route::get('/test', function () {
    

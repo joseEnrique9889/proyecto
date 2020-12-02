@@ -22,7 +22,7 @@ class ProductoController extends Controller
    public function index()
     {
 
-        $this->authorize('haveaccess','producto.index');
+       // $this->authorize('haveaccess','producto.index');
         
         //$datos['productos']=Producto::paginate(5);
         $productos = Producto::where('user_id',Auth::id())->get();
@@ -39,7 +39,7 @@ class ProductoController extends Controller
     {
         $usuarios = User::where('id',Auth::id())->get();
         $cat= Categoria::orderBy('nombre')->get();
-        $this->authorize('haveaccess','producto.create');
+       // $this->authorize('haveaccess','producto.create');
         return view('supervisor.producto.create',compact('cat','usuarios'));
     }
 
@@ -52,7 +52,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
-        $this->authorize('haveaccess','producto.create');
+      //  $this->authorize('haveaccess','producto.create');
         // $datosCategorias=request()->all();
         $datosProductos=request()->except('_token');
         //validamos que el campo imagen tenga algo
@@ -63,7 +63,7 @@ class ProductoController extends Controller
        Producto::insert($datosProductos);
         //return response()->json($datosCategorias);
         //return view('supervisor.categoria.index');
-       return redirect('producto');
+       return redirect('producto')->with('status_success','Producto Creado Correctamente');;
     }
 
     /**
@@ -74,7 +74,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('haveaccess','producto.show');
+       // $this->authorize('haveaccess','producto.show');
         $producto= Producto::findOrFail($id);
 
         return view('supervisor.producto.show',compact('producto'));
@@ -88,7 +88,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('haveaccess','producto.edit');
+        //$this->authorize('haveaccess','producto.edit');
         //devuelve todo el valor del id.
         $producto= Producto::findOrFail($id);
 
@@ -104,7 +104,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('haveaccess','producto.edit');
+       // $this->authorize('haveaccess','producto.edit');
         $datosProductos=request()->except(['_token','_method']);
 
        if ($request->hasFile('imagen')) {
@@ -131,7 +131,7 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('haveaccess','producto.destroy');
+       // $this->authorize('haveaccess','producto.destroy');
         $producto= Producto::findOrFail($id);
 
        if(Storage::delete('public/'.$producto->imagen)){

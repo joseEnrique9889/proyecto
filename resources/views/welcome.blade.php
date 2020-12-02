@@ -1,4 +1,4 @@
-@extends('layout.plantilla')
+@extends('layout.master')
 @section('title', 'Mercado Ixhuatan')
 @section('content')
 <center><h1>Bienvenido A Mercado Libre Ixhuatan</h1></center>

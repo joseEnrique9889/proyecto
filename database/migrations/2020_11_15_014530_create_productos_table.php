@@ -24,7 +24,9 @@ class CreateProductosTable extends Migration
             $table->string('estado');
             //$table->string('categoria');
             //$table->char('activo',2);
-            $table->tinyInteger('concesionado')->default(0);
+            $table->tinyInteger('concesionado')->nullable();
+            $table->string('motivo')->nullable();
+           // $table->enum('concesionado', ['Si', 'No'])->default('No');
             $table->timestamps();
 
              $table->foreignId('user_id')->references('id')->on('users');

@@ -36,21 +36,21 @@
         <td> <img src="{{ asset('storage').'/'.$user->imagen}}" alt="" width="150"></td>
 
         <td>
-          @can('view',[$user, ['user.show', 'userpropio.show']])
+           @can('view',[$user, ['user.show', 'userpropio.show']])
           <a class="btn btn-success" href="{{ route('user.show',$user->id)}}">Ver</a></td>
           @endcan
         <td>
          @can('view',[$user, ['user.edit', 'userpropio.edit']])
           <a class="btn btn-warning" href="{{ route('user.edit',$user->id)}}">Editar</a></td>
-          @endcan
+         @endcan
         <td>
-          @can('haveaccess','user.destroy')
+           @can('haveaccess','user.destroy')
           <form action="{{ route('user.destroy',$user->id)}}" method="POST">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger">Eliminar</button>
           </form>
-          @endcan
+         @endcan
          </tr>
       @endforeach
    

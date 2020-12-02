@@ -20,7 +20,7 @@ class RoleController extends Controller
     }
     public function index()
     {
-        Gate::authorize('haveaccess','role.index');
+       // Gate::authorize('haveaccess','role.index');
         $roles = Role::orderBy('id','Asc')->paginate(3);
 
         return view('role.index',compact('roles'));
@@ -33,7 +33,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        Gate::authorize('haveaccess','role.create');
+       // Gate::authorize('haveaccess','role.create');
         $permissions = Permission::get();
 
         return view('role.create', compact('permissions'));
@@ -47,7 +47,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-         Gate::authorize('haveaccess','role.create');
+        // Gate::authorize('haveaccess','role.create');
        $request->validate([
         'name' => 'required|max:50|unique:roles,name',
         'slug' => 'required|max:50|unique:roles,slug',
@@ -75,7 +75,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        $this->authorize('haveaccess','role.show');
+        //$this->authorize('haveaccess','role.show');
         
         $permission_role=[];
         foreach($role->permissions as $permission){
@@ -100,7 +100,7 @@ class RoleController extends Controller
     public function edit(Role $role)
 
     {
-        $this->authorize('haveaccess','role.edit');
+       // $this->authorize('haveaccess','role.edit');
         $permission_role=[];
         foreach($role->permissions as $permission){
             $permission_role[]=$permission->id;
@@ -125,7 +125,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        $this->authorize('haveaccess','role.edit');
+        //$this->authorize('haveaccess','role.edit');
 
         $request->validate([
         'name' => 'required|max:50|unique:roles,name,'.$role->id,
@@ -150,7 +150,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $this->authorize('haveaccess','role.destroy');
+       // $this->authorize('haveaccess','role.destroy');
         $role->delete();
 
         return redirect()->route('role.index')->with('status_success','Rol Eliminado Correctamente');

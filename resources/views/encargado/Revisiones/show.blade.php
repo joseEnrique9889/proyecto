@@ -1,10 +1,10 @@
 @extends('layout.master')
-@section('title', 'Editar')
+@section('title', 'Mostrar')
 @section('content')
 <div class="container-fluid">
   <div class="panel shadow">
   
-     <form action="{{ url('/producto/'.$producto->id) }}" method="POST" enctype="multipart/form-data">
+     <form action="{{ url('/Revisiones/'.$producto->id) }}" method="POST" enctype="multipart/form-data">
 
       {{ csrf_field() }}
       @method('PUT')
@@ -48,17 +48,17 @@
     <label for="exampleFormControlInput1">Estado</label>
     <input type="text" name="estado" class="form-control" id="cantidad" value="{{ $producto->estado }}">
   </div>
-@if ($producto->concesionado==1)
-  <label >Motivo del rechazo</label>
   
-<div class="p-3 mb-2 bg-info text-white">{{ $producto->motivo }}</div>
 
-@endif
-
- <center><input class="btn btn-success" type="submit" value="Enviar"></center> 
+   <div class="alert alert-info" role="alert">
+    Motivo si se rechazo:<textarea name="motivo" id="motivo" class="form-control" rows="2" value="{{ $producto->motivo }}"></textarea>
+  </div>
+  <button type="submit" class="btn-danger">Rechazada</button>
 </form>
-      <a href="{{ url('/producto') }}"><button class="btn btn-danger">Regresar</button></a>    
-       
-</div>
+<form action="/Revisiones/{{ $producto->id  }}" method="post">
+ @csrf
+  @method('PUT')
+  <button type="submit" class="btn-success">Concesionar</button>
+</form>
    
 @endsection

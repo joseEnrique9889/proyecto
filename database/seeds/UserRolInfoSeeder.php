@@ -89,7 +89,7 @@ class UserRolInfoSeeder extends Seeder
         $useradmin->roles()->sync([ $roladmin->id ]);
         $userencargado->roles()->sync([ $rolaencargado->id]);
         $usercontador->roles()->sync([ $rolcontador->id]);
-
+        //$rolencargado->permissions()->sync( $permission_all );
         //permisos
         $permission_all = [];
         //creacion de los permisos roles
@@ -126,7 +126,7 @@ class UserRolInfoSeeder extends Seeder
  			
 
  		//permisos de los usuarios
- 		$permission = Permission::create([
+ 		$permissionIndex = Permission::create([
     	'name' => 'lista de user',
 		  'slug' => 'user.index',
    		'description' => 'lista de user',
@@ -138,100 +138,53 @@ class UserRolInfoSeeder extends Seeder
    		'description' => 'un usuario puede ver un rol',
    		]);
  		$permission_all[] = $permission->id;
- 	 	$permission = Permission::create([
+ 	 	$permissionEdit = Permission::create([
     	'name' => 'Edit user',
 		'slug' => 'user.edit',
    		'description' => 'Editar  roles',
    		]);
 		$permission_all[] = $permission->id;
- 		$permission = Permission::create([
+ 		$permissionDestroy = Permission::create([
     	'name' => 'Destroy user',
 		'slug' => 'user.destroy',
    		'description' => 'creacion del rol',
    		]);
- 		$permission_all[] = $permission->id;
+    $permission_all[] = $permission->id;
+    
 
- 		//tabla de permisos de roles
- 		//$roladmin->permissions()->sync( $permission_all );
-
-//nuevos permiso
-    $permission = Permission::create([
+    //nuevos permiso
+    $permissionUserShow = Permission::create([
       'name' => 'ver mi propio usuario',
       'slug' => 'userpropio.show',
       'description' => 'un usuario puede ver su propio registro',
       ]);
     $permission_all[] = $permission->id;
-    $permission = Permission::create([
+    $permissionUserEdit = Permission::create([
       'name' => 'Edit mi propio user',
     'slug' => 'userpropio.edit',
       'description' => 'Editar propio user',
       ]);
+    $permissionSide = Permission::create([
+      'name' => 'se puede ver el sidebar',
+    'slug' => 'sidebar.show',
+      'description' => 'un usuario autenticado puede ver el sidebar',
+      ]);
+ 		
+    //$rolcontador->permissions()->sync([ $permissionDestroy->id]);
+    //$rolaencargado->permissions()->sync([ $permissionEdit->id]);
+    $roladmin->permissions()->sync([ $permissionSide->id]);
+    $rolcontador->permissions()->sync([ $permissionSide->id]);
+    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id]);
+    
+    $roluser->permissions()->sync([ $permissionIndex->id,$permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id]);
+   // $roluser->permissions()->sync([ ]);
+    //$roluser->permissions()->sync([ $permissionUserEdit->id]);
+    
+   
+ 		//tabla de permisos de roles
+ 		//$roladmin->permissions()->sync( $permission_all );
 
 
-    //permisos de categoria
-    $permission = Permission::create([
-      'name' => 'lista de categoria',
-      'slug' => 'categoria.index',
-      'description' => 'lista de categoria',
-      ]);
-      $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'ver categoria',
-      'slug' => 'categoria.show',
-      'description' => 'un usuario puede ver la lista de categoria',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'crear categoria',
-      'slug' => 'categoria.create',
-      'description' => 'un usuario puede ver la lista de categoria',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'Editar categoria',
-      'slug' => 'categoria.edit',
-      'description' => 'Editar  categoria',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'Destroy categoria',
-      'slug' => 'categoria.destroy',
-      'description' => 'eliminacion de categoria',
-      ]);
-    $permission_all[] = $permission->id;
-
-
-     //permisos de Productos
-    $permission = Permission::create([
-      'name' => 'lista de Productos',
-      'slug' => 'producto.index',
-      'description' => 'lista de producto',
-      ]);
-      $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'ver producto',
-      'slug' => 'producto.show',
-      'description' => 'un usuario puede ver un producto en especifico',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'crear producto',
-      'slug' => 'producto.create',
-      'description' => 'un usuario puede crear un producto',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'Editar Productos',
-      'slug' => 'producto.edit',
-      'description' => 'Editar producto',
-      ]);
-    $permission_all[] = $permission->id;
-    $permission = Permission::create([
-      'name' => 'Destroy producto',
-      'slug' => 'producto.destroy',
-      'description' => 'eliminacion de producto',
-      ]);
-    $permission_all[] = $permission->id;
-
+    
     }
 }

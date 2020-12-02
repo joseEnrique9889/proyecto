@@ -32,5 +32,7 @@ class AuthServiceProvider extends ServiceProvider
            return $user->havePermission($perm);
            //return $perm;
         });
+
+    
     }
 }
