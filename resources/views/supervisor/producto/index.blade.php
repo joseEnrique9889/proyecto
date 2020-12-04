@@ -43,17 +43,27 @@
     <th >{{ $producto->cantidad}}</th>
     <th >{{ $producto->precio}}</th>
     <th >{{ $producto->estado}}</th>
-     <th>
-     
-      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
-    
-    </th>
 
-        <th>
+ @if($producto->concesionado<=1)
+     <th>
+    
+      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
+   
+    </th>
+       @endif
+@if($producto->concesionado==2)
+       <th>
+    
+      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Cambiar imagen</a>
+   
+    </th>
+    @endif
+        <th >
          
           <a href="{{ url('/producto/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
         
         </th>
+        @if($producto->concesionado<=1)
          <th>
          
            <form method="post" action="{{ url('/producto/'.$producto->id) }}">
@@ -63,6 +73,7 @@
            </form>
            
          </th>
+         @endif
     </tr>
 
     @empty

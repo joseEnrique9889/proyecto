@@ -19,13 +19,14 @@ class CreateProductosTable extends Migration
             $table->unsignedbigInteger('categoria_id');
             $table->string('descripcion');
             $table->string('imagen');
-            $table->bigInteger('cantidad')->unisigned()->default(0);
+            $table->bigInteger('cantidad')->unisigned()->default(1);
             $table->decimal('precio',12,2)->default(0);
             $table->string('estado');
             //$table->string('categoria');
             //$table->char('activo',2);
             $table->tinyInteger('concesionado')->nullable();
             $table->string('motivo')->nullable();
+            $table->tinyInteger('comprado')->nullable()->default(0);
            // $table->enum('concesionado', ['Si', 'No'])->default('No');
             $table->timestamps();
 

@@ -22,6 +22,10 @@ Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 
 Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']])
 ;
+Route::get('comprar/{comprar}/comprar','HomeController@comprar');
+Route::put('comprar/{comprar}','HomeController@update');
+
+Route::get('comprado','HomeController@index');
 Route::get('Revisiones/{Revisiones}/show','RevisarControler@show');
 //pruebas
 Route::get('/test', function () {

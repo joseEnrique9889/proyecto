@@ -117,9 +117,10 @@ class ProductoController extends Controller
         }
 
         Producto::where('id','=',$id)->update($datosProductos);
-
+        $valores['concesionado']=Null;
         $producto= Producto::findOrFail($id);
-
+        $producto->fill($valores);
+        $producto->save();
         return view('supervisor.producto.edit',compact('producto'));
     }
 

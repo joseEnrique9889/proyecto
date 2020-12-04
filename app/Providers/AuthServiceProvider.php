@@ -33,6 +33,8 @@ class AuthServiceProvider extends ServiceProvider
            //return $perm;
         });
 
+       
+
     
     }
 }
