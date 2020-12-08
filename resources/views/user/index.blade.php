@@ -8,7 +8,9 @@
  
 <table class="table table-hover">
    
+
   <thead>
+
     <td colspan="8"><center><label>LISTA DE Usuarios </div></label></center></td>
     <tr>
       <th scope="col">id</th>
@@ -22,7 +24,7 @@
   <tbody class="body1">
     <tr>
        @foreach ($users as $user)
-      
+    
        </tr>
         <th scope="row">{{ $user->id }}</th>
         <td>{{ $user->name }} {{ $user->apellido }}</td>

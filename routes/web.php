@@ -20,8 +20,26 @@ Route::get('/listaProdu','HomeController@getProd');
 
 Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 
-Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']])
-;
+Route::get('comentario/{producto}','ComentarioController@create');
+
+Route::get('comentario','ComentarioController@index');
+Route::get('pregunta','ComentarioController@preguntas');
+Route::post('comentario','ComentarioController@store');
+Route::get('comentario/{comentario}/show','ComentarioController@show');
+Route::get('comentario/{comentario}/edit','ComentarioController@edit');
+Route::put('comentario/{comentario}','ComentarioController@update');
+
+
+Route::get('calificacion/create','CalificacionController@create');
+Route::post('calificacion','CalificacionController@store');
+
+Route::get('comprar/{comprar}/comprar','HomeController@comprar');
+Route::get('detalle/{detalle}/producto','HomeController@detalle');
+Route::put('comprar/{comprar}','HomeController@update');
+
+Route::get('comprado','HomeController@index');
+
+Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']]);
 Route::get('Revisiones/{Revisiones}/show','RevisarControler@show');
 //pruebas
 Route::get('/test', function () {
@@ -82,4 +100,6 @@ Route::get('producto/{producto}/show','ProductoController@show');
 Route::resource('/role', 'RoleController')->names('role');
 
 Route::resource('/user', 'UserController', ['except'=>['create', 'store']])->names('user');
+
+Route::get('user/{user}/contraseña','UserController@editPassword');
 

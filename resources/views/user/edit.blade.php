@@ -31,6 +31,20 @@
        value="{{ old('email',$user->email) }}"
        >
   </div>
+
+
+  <div class="form-group">
+      <label for="password">Contraseña</label>
+       <input type="password" class="form-control" id="slug" placeholder="password"
+       name="password"
+       value="{{ old('password',$user->password) }}"
+       >
+  </div>
+
+
+
+
+
    <div class="form-group">
     <label for="exampleFormControlInput1">Imagen</label>
     <br />

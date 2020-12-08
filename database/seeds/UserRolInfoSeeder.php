@@ -169,12 +169,36 @@ class UserRolInfoSeeder extends Seeder
     'slug' => 'sidebar.show',
       'description' => 'un usuario autenticado puede ver el sidebar',
       ]);
+
+    $permissionComen= permission::create([
+      'name' => 'puede moderar un comentario',
+      'slug' =>'comentario.index',
+      'description' => 'el usuario encargado puede moderar',
+    ]);
+
+    $permissionRev= permission::create([
+      'name' => 'puede revisar y concesionar un producto',
+      'slug' =>'revisar.index',
+      'description' => 'el usuario encargado puede concesionar un producto',
+    ]);
+
+     $permissionListCat= permission::create([
+      'name' => 'puede ver la lista de categoria',
+      'slug' =>'categoria.index',
+      'description' => 'el usuario supervisor puede ver la lista de categoria',
+    ]);
+
+     $permissionListProduct= permission::create([
+      'name' => 'puede ver la lista de producto',
+      'slug' =>'producto.index',
+      'description' => 'el usuario supervisor puede ver la lista de producto',
+    ]);
  		
     //$rolcontador->permissions()->sync([ $permissionDestroy->id]);
     //$rolaencargado->permissions()->sync([ $permissionEdit->id]);
-    $roladmin->permissions()->sync([ $permissionSide->id]);
+    $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionListProduct->id]);
     $rolcontador->permissions()->sync([ $permissionSide->id]);
-    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id]);
+    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id,$permissionComen->id,$permissionRev->id]);
     
     $roluser->permissions()->sync([ $permissionIndex->id,$permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id]);
    // $roluser->permissions()->sync([ ]);

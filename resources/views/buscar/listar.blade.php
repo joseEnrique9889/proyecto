@@ -2,6 +2,11 @@
 @section('title', 'ADMINISTRADOR')
 @section('content')
 <center><h2>Lista De Producto</h2></center>
+<form class="navbar-form navbar-left pull-right">
+
+    <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="nombre del producto" aria-label="Search" autocomplete="on">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
 <div class="container card text-center">
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
@@ -17,9 +22,9 @@
                <h5 class="card-text">Precion: {{ $producto->precio }}</h5> 
             <p class="card-text">{{ $producto->descripcion }}</p>
             <h5 class="card-text">Estado: {{ $producto->estado }}</h5>
-            <a href="#" class="btn btn-primary">ver detalle</a>
+            <a href="{{ url('/detalle/'.$producto->id.'/producto') }}" class="btn btn-primary">ver detalle</a>
             
-          <a href="#" class="btn btn-success">comprar</a>
+          <a href="{{ url('/comprar/'.$producto->id.'/comprar') }}"  class="btn btn-success">comprar</a>
         
 
 

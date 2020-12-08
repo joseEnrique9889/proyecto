@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\UserRol\Models\Role;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $this->authorize('haveaccess','user.index');
+       // $this->authorize('haveaccess','user.index');
          $users = User::with('roles')->orderBy('id','Asc')->paginate(3);
            // return $users;
         return view('user.index',compact('users'));
@@ -90,16 +91,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,User $user)
     {
-         $request->validate([
+        $request->validate([
         'name' => 'required|max:50|unique:users,name,'.$user->id,
        // 'apellido'=> 'required|max:50|unique:users,apellido,'.$user->id,
         'email' => 'required|max:50|unique:users,email,'.$user->id,
         
        ]);
+        $datosUsuario=request()->except(['_token','_method']);
 
-          
+           $datosUsuario['password']=Hash::make( $datosUsuario['password'] );
+
         if ($request->hasFile('imagen')) {
 
            // $user= User::findOrFail($user);
@@ -108,12 +111,14 @@ class UserController extends Controller
             $user['imagen']=$request->file('imagen')->store('uploads/usuario','public');
         }
          // dd($request->all());
-         $user->update($request->all());
 
-         
+         $user->update($datosUsuario);
+
+        
 
          $user->roles()->sync($request->get('roles')); 
        //} 
+    
     return redirect()->route('user.index')->with('status_success','Usuario Actualizado Correctamente');
 
     }
@@ -124,6 +129,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(User $user)
     {
 
