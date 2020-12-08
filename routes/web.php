@@ -23,11 +23,16 @@ Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 Route::get('comentario/{producto}','ComentarioController@create');
 
 Route::get('comentario','ComentarioController@index');
+<<<<<<< HEAD
 Route::get('pregunta','ComentarioController@preguntas');
 Route::post('comentario','ComentarioController@store');
 Route::get('comentario/{comentario}/show','ComentarioController@show');
 Route::get('comentario/{comentario}/edit','ComentarioController@edit');
 Route::put('comentario/{comentario}','ComentarioController@update');
+=======
+Route::post('comentario','ComentarioController@store');
+
+>>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
 
 
 Route::get('calificacion/create','CalificacionController@create');

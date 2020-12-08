@@ -48,7 +48,11 @@
 
 <div>
 <center><a href="{{ url('/comprar/'.$producto->id.'/comprar') }}"  class="btn btn-success">comprar</a></center>
+<<<<<<< HEAD
 <a href="/comentario/{{ $producto->id }}" class="btn btn-info">Preguntar</a>
+=======
+<a href="/Comentar/{{ $producto->id }}" class="btn btn-info">Preguntar</a>
+>>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
 </div>
 
 
