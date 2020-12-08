@@ -17,9 +17,12 @@ class HomeController extends Controller
 
       return view('welcome',$datos);
 	}
-	public function getProd(){
+	public function getProd(Request $request){
 
-    $datos['productos']=Producto::paginate(10);
+    $nombres = $request->get('buscar');
+        $datos['productos'] =Producto::where('nombre','like',"%$nombres%")->paginate(10);
+
+   // $datos['productos']=Producto::paginate(10);
       return view('buscar.listar',$datos);
 	}
 
@@ -45,6 +48,14 @@ class HomeController extends Controller
        return view('cliente.show',compact('producto'));
     }
 
+    public function detalle($id)
+    {
+       $producto =Producto::findOrFail($id);
+       $comentarios = $producto->comentario()->get();
+       return view('cliente.detalle',compact('producto','comentarios'));
+    }
+
+
    
 
     public function update(Request $request, $id)
@@ -57,7 +68,7 @@ class HomeController extends Controller
      $valores['comprado']=DB::table('productos')->increment('comprado');  
      $valores['cantidad']=DB::table('productos')->decrement('cantidad'); 
 	$registro= Producto::find($id);
-    $registro->fill($valores);
+    $registro->fill([$valores]);
     $registro->save();
     
 

@@ -23,6 +23,8 @@
   <h4>El Producto es: {{ $producto->estado }}</h4>
   <br>
   <h4>El costo es: {{ $producto->precio }}</h4> 
+
+  
   
 <form action="/comprar/{{ $producto->id  }}" method="post">
  @csrf

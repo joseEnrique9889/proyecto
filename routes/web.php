@@ -20,12 +20,23 @@ Route::get('/listaProdu','HomeController@getProd');
 
 Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 
-Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']])
-;
+Route::get('comentario/{producto}','ComentarioController@create');
+
+Route::get('comentario','ComentarioController@index');
+Route::post('comentario','ComentarioController@store');
+
+
+
+Route::get('calificacion/create','CalificacionController@create');
+Route::post('calificacion','CalificacionController@store');
+
 Route::get('comprar/{comprar}/comprar','HomeController@comprar');
+Route::get('detalle/{detalle}/producto','HomeController@detalle');
 Route::put('comprar/{comprar}','HomeController@update');
 
 Route::get('comprado','HomeController@index');
+
+Route::resource('Revisiones', 'RevisarControler', ['only' => ['index', 'update']]);
 Route::get('Revisiones/{Revisiones}/show','RevisarControler@show');
 //pruebas
 Route::get('/test', function () {
