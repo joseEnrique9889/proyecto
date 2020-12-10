@@ -15,7 +15,6 @@
 
      <tbody class="body1">
     @forelse($comentarios as $comentario)
-<<<<<<< HEAD
     
     
       <tr>
@@ -31,18 +30,6 @@
 
    <tr>
      <th colspan="10">Sin Preguntas Registrado</th>
-=======
-
-     <th scope="row">{{ $comentario->producto->nombre }}<img src="{{ asset('storage').'/'.$comentario->producto->imagen}}" alt="" width="109"></th>
-
-     <th scope="row">{{ $comentario->contenido }}</th>
-     <td scope="row"><a href="{{ url('/comentario/'.$comentario->id.'/edit') }}" role="button" class="btn btn-warning" data-toggle="modal">moderar</a> &nbsp <a href="{{ url('/comentario/'.$comentario->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Responder</a>&nbsp <a href="{{ url('/comentario/'.$comentario->id.'/edit') }}" role="button" class="btn btn-danger" data-toggle="modal">Eliminar</a> </td> 
-   
-
-     @empty
-   <tr>
-     <th colspan="10">Sin Productos Registrado</th>
->>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
    </tr>
       @endforelse
   </tbody>

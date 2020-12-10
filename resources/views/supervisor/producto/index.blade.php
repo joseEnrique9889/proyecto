@@ -27,6 +27,7 @@
      class="p-3 mb-2 bg-success text-white"
      
       @endif
+      
        @if ($producto->concesionado==1)
     class="p-3 mb-2 bg-danger text-white"
      @endif

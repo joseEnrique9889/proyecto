@@ -18,28 +18,25 @@ use Illuminate\Support\Facades\Gate;
 Route::get('/','HomeController@getCat');
 Route::get('/listaProdu','HomeController@getProd');
 
+Route::get('Productos','HomeController@kardex');
+
 Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 
 Route::get('comentario/{producto}','ComentarioController@create');
 
 Route::get('comentario','ComentarioController@index');
-<<<<<<< HEAD
 Route::get('pregunta','ComentarioController@preguntas');
 Route::post('comentario','ComentarioController@store');
 Route::get('comentario/{comentario}/show','ComentarioController@show');
 Route::get('comentario/{comentario}/edit','ComentarioController@edit');
 Route::put('comentario/{comentario}','ComentarioController@update');
-=======
-Route::post('comentario','ComentarioController@store');
-
->>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
 
 
 Route::get('calificacion/create','CalificacionController@create');
 Route::post('calificacion','CalificacionController@store');
 
 Route::get('comprar/{comprar}/comprar','HomeController@comprar');
-Route::get('detalle/{detalle}/producto','HomeController@detalle');
+Route::get('kardex/{kardex}/producto','HomeController@detalle');
 Route::put('comprar/{comprar}','HomeController@update');
 
 Route::get('comprado','HomeController@index');
@@ -108,3 +105,8 @@ Route::resource('/user', 'UserController', ['except'=>['create', 'store']])->nam
 
 Route::get('user/{user}/contraseña','UserController@editPassword');
 
+Route::put('contraseña/{user}', 'UserController@updatePass');
+
+Route::get('usuarios','HomeController@registrado');
+
+Route::get('usuarios/{usuarios}/historial','HomeController@historial');

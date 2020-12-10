@@ -9,16 +9,19 @@
       {{ csrf_field() }}
       @method('PUT')
     <center><h3>Detalle de {{ $producto->nombre }}</h3></center>
+    <h5><label>Publicacion:</label>{{ $producto->updated_at}} </h5>
  <br>
 <center><img src="{{ asset('storage').'/'.$producto->imagen}}" alt="" width="400"></center>
 <br>
 <h3><label>Descripcion del Producto: </label></h3>
 
 <h4>{{ $producto->descripcion }}</h4>
+
 <hr>
 <h4><label>Vendendor:</label> {{ $producto->propietario->name }}</h4>
   
   <h4><label>stock disponible:</label>   {{ $producto->cantidad }}</h4>
+  <h4><label>vendidos:</label> {{ $producto->comprado }}</h4>
   <h4><label>categoria:</label> {{ $producto->categoria->nombre }}</h4>
   <h4><label>El Producto es:</label> {{ $producto->estado }}</h5>
   <h4><label>El costo es: </label>${{ $producto->precio }} mx</h4> 
@@ -43,16 +46,12 @@
   </div>
 @endif
 @empty
-  Se el Primero en Preguntar
+  No hay Comentarios a un
 @endforelse
 
 <div>
 <center><a href="{{ url('/comprar/'.$producto->id.'/comprar') }}"  class="btn btn-success">comprar</a></center>
-<<<<<<< HEAD
 <a href="/comentario/{{ $producto->id }}" class="btn btn-info">Preguntar</a>
-=======
-<a href="/Comentar/{{ $producto->id }}" class="btn btn-info">Preguntar</a>
->>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
 </div>
 
 

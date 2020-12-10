@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,10 +20,16 @@ class UserController extends Controller
     }
     public function index()
     {
-       // $this->authorize('haveaccess','user.index');
+      
          $users = User::with('roles')->orderBy('id','Asc')->paginate(3);
+
+          
            // return $users;
         return view('user.index',compact('users'));
+           
+      
+           
+  
     }
 
     /**
@@ -99,9 +106,8 @@ class UserController extends Controller
         'email' => 'required|max:50|unique:users,email,'.$user->id,
         
        ]);
-        $datosUsuario=request()->except(['_token','_method']);
 
-           $datosUsuario['password']=Hash::make( $datosUsuario['password'] );
+        $datosUsuario=request()->except(['_token','_method']);
 
         if ($request->hasFile('imagen')) {
 
@@ -110,17 +116,56 @@ class UserController extends Controller
             Storage::delete('public/'.$user->imagen);
             $user['imagen']=$request->file('imagen')->store('uploads/usuario','public');
         }
-         // dd($request->all());
+        if(is_null($datosUsuario['password']))
+            unset($datosUsuario['password']);
+        else
+
+           $datosUsuario['password']=Hash::make( $datosUsuario['password'] );
 
          $user->update($datosUsuario);
 
-        
 
-         $user->roles()->sync($request->get('roles')); 
+         $user->roles()->sync($request->get('roles'));  
        //} 
     
     return redirect()->route('user.index')->with('status_success','Usuario Actualizado Correctamente');
 
+    }
+
+    public function editPassword(User $user){
+
+        $roles= Role::orderBy('name')->get();
+
+        //return $roles;
+       // $user= User::findOrFail($user);
+        return view('user.contraseña', compact('roles', 'user'));
+    }
+
+    public function updatePass(Request $request,User $user){
+
+
+        $datosUsuario=request()->except(['_token','_method']);
+if ($request->hasFile('imagen')) {
+
+           // $user= User::findOrFail($user);
+
+            Storage::delete('public/'.$user->imagen);
+            $user['imagen']=$request->file('imagen')->store('uploads/usuario','public');
+        }
+
+         if(is_null($datosUsuario['password']))
+            unset($datosUsuario['password']);
+        else
+
+           $datosUsuario['password']=Hash::make( $datosUsuario['password'] );
+
+         $user->update($datosUsuario);
+
+
+         $user->roles()->sync($request->get('roles')); 
+       //} 
+    
+    return redirect()->route('user.index')->with('status_success','contraseña Actualizada Correctamente');
     }
 
     /**

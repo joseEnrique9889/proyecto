@@ -60,7 +60,7 @@ class UserRolInfoSeeder extends Seeder
    		'name' => 'Admin',
    		'slug' => 'admin',
   		'description' => 'Administrador',
- 		  'full-access' => 'yes',
+ 		  'full-access' => 'no',
 		]);
 
       $rolaencargado=Role::create([
@@ -132,7 +132,7 @@ class UserRolInfoSeeder extends Seeder
    		'description' => 'lista de user',
    		]);
    		$permission_all[] = $permission->id;
- 		$permission = Permission::create([
+ 		$permissionShow = Permission::create([
     	'name' => 'show user',
 		  'slug' => 'user.show',
    		'description' => 'un usuario puede ver un rol',
@@ -193,12 +193,27 @@ class UserRolInfoSeeder extends Seeder
       'slug' =>'producto.index',
       'description' => 'el usuario supervisor puede ver la lista de producto',
     ]);
+
+      $permissionRestPass= permission::create([
+      'name' => 'contraseña',
+      'slug' =>'contraseña.rest',
+      'description' => 'el usuario supervisor puede cambiar su propia contraseña',
+    ]);
+
+      $permissionRestPassCo= permission::create([
+      'name' => 'contraseña encargado',
+      'slug' =>'restcon.rest',
+      'description' => 'el usuario encargado puede cambiar la demas contraseña',
+    ]);
+
+
  		
     //$rolcontador->permissions()->sync([ $permissionDestroy->id]);
     //$rolaencargado->permissions()->sync([ $permissionEdit->id]);
-    $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionListProduct->id]);
+    $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionListProduct->id,$permissionRestPass->id, $permissionEdit->id, $permissionIndex->id,$permissionEdit->id,$permissionDestroy->id,$permissionShow->id]);
+
     $rolcontador->permissions()->sync([ $permissionSide->id]);
-    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id,$permissionComen->id,$permissionRev->id]);
+    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id,$permissionComen->id,$permissionRev->id, $permissionRestPassCo->id]);
     
     $roluser->permissions()->sync([ $permissionIndex->id,$permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id]);
    // $roluser->permissions()->sync([ ]);

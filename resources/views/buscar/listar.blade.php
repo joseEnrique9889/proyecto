@@ -22,7 +22,7 @@
                <h5 class="card-text">Precion: {{ $producto->precio }}</h5> 
             <p class="card-text">{{ $producto->descripcion }}</p>
             <h5 class="card-text">Estado: {{ $producto->estado }}</h5>
-            <a href="{{ url('/detalle/'.$producto->id.'/producto') }}" class="btn btn-primary">ver detalle</a>
+            <a href="{{ url('/kardex/'.$producto->id.'/producto') }}" class="btn btn-primary">ver detalle</a>
             
           <a href="{{ url('/comprar/'.$producto->id.'/comprar') }}"  class="btn btn-success">comprar</a>
         

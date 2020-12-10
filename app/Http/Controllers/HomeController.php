@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Producto;
+use App\User;
+use App\Comprado;
+use App\Mail\ProductoComprado;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -42,6 +46,12 @@ class HomeController extends Controller
        return view('cliente.index',compact('productos'));
     }
 
+    public function kardex(){
+      $productos=Producto::orderBy('id','Asc')->paginate(10);
+
+      return view('supervisor.kardex',compact('productos'));
+    }
+
 	public function comprar($id)
     {
        $producto =Producto::findOrFail($id);
@@ -60,24 +70,53 @@ class HomeController extends Controller
 
     public function update(Request $request, $id)
     {
-     // $datosProdu=request()->except(['_token','_method']);
+        // $datosProdu=request()->except(['_token','_method']);
+      $valores = $request->except(['_token','_method']);
+      Producto::where('id','=',$id)->update($valores);
+
+        //$registro= Revision::findOrFail($id);
+
+       // $datosProdu=request()->except(['_token','_method']);
       $valores = $request->except(['_token','_method']);
       Producto::where('id','=',$id)->update($valores);
 
         //$registro= Revision::findOrFail($id);
      $valores['comprado']=DB::table('productos')->increment('comprado');  
      $valores['cantidad']=DB::table('productos')->decrement('cantidad'); 
-	$registro= Producto::find($id);
-    $registro->fill([$valores]);
-    $registro->save();
-    
+     $registro= Producto::find($id);
+     $registro->fill([$valores]);
+     $registro->save();
 
+
+      $user =User::find($registro->user_id);
+
+
+   Mail::to($user->email)->send(new ProductoComprado($registro));
         //return view('encargado.Revisiones.index',compact('registro'));
 
         //return view('encargado.Revisiones.show',compact('producto'));
-     return redirect("/")->with('status_success','Compra Realizada'); 
+     return redirect("/comprado")->with('status_success','Compra Realizada'); 
        
       
     }
+
+    public function registrado(){
+
+       $usuarios=User::orderBy('id','Asc')->paginate(10);
+
+      return view('supervisor.vendedor.index',compact('usuarios'));
+    }
+
+    public function historial($id){
+
+     $usuarios= User::findOrFail($id);
+
+  $contar = DB::table('productos')->where('id', $usuarios);
+
+    
+
+        return view('supervisor.vendedor.show',compact('usuarios','contar'));
+    }
+   
 
 }

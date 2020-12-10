@@ -29,6 +29,15 @@ class User extends Authenticatable
      public function usuario(){
         return $this->hasMany('App\Comentario', 'user_id');
     }
+
+    public function producto(){
+        return $this->hasMany('App\producto','user_id');
+    }
+
+public function user()
+{
+    return $this->belongsTo('App\User');
+}
     protected $hidden = [
         'password', 'remember_token',
     ];

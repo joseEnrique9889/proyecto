@@ -26,7 +26,7 @@
 
   
   
-<form action="/comprar/{{ $producto->id  }}" method="post">
+<form action="/comprar/{{ $producto->id }}" method="post">
  @csrf
   @method('PUT')
 

@@ -42,9 +42,20 @@
           <a class="btn btn-success" href="{{ route('user.show',$user->id)}}">Ver</a></td>
           @endcan
         <td>
-         @can('view',[$user, ['user.edit', 'userpropio.edit']])
-          <a class="btn btn-warning" href="{{ route('user.edit',$user->id)}}">Editar</a></td>
+         @can('view',[$user, ['user.edit', 'userpropio.edit', 'contraseña.rest']])
+        
+         @can('haveaccess','contraseña.rest')
+          <a class="btn btn-warning" href="{{ route('user.edit',$user->id)}}">Editar</a>
+          @endcan
+          @if($user->id>=2)
+          @can('haveaccess','restcon.rest')
+         <a class="btn btn-warning" href="{{ route('user.edit',$user->id)}}">Editar</a>
          @endcan
+         @endif
+          @endcan
+        
+          
+      
         <td>
            @can('haveaccess','user.destroy')
           <form action="{{ route('user.destroy',$user->id)}}" method="POST">

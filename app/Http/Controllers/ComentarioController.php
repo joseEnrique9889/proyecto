@@ -25,7 +25,6 @@ class ComentarioController extends Controller
 
 }
 
-<<<<<<< HEAD
  public function preguntas()
 {
    
@@ -35,8 +34,6 @@ class ComentarioController extends Controller
 
 }
 
-=======
->>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
     public function create($id)
     {
     $producto= Producto::find($id);
@@ -55,7 +52,6 @@ class ComentarioController extends Controller
 
         return redirect("/");
     }
-<<<<<<< HEAD
 
     public function edit($id){
          $comentario =Comentario::find($id);
@@ -85,6 +81,4 @@ class ComentarioController extends Controller
             return redirect("/");
 
     }
-=======
->>>>>>> cc2ab4211efaffe9a20b3c0c4099446544c2eaf5
 }

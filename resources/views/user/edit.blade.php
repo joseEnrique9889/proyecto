@@ -33,13 +33,7 @@
   </div>
 
 
-  <div class="form-group">
-      <label for="password">Contraseña</label>
-       <input type="password" class="form-control" id="slug" placeholder="password"
-       name="password"
-       value="{{ old('password',$user->password) }}"
-       >
-  </div>
+ 
 
 
 
@@ -70,6 +64,16 @@
          @endforeach
        </select>
        
+  </div>
+
+  <hr>
+
+  <center><label>Desea cambiar la contraseña:<em>(Si no lo desea simplemente ignora)</em> </label></center>
+  <div class="form-group">
+      <label for="password" class="mtop16">Ingrese La Nueva Contraseña: </label>
+       <input type="password" class="form-control" id="slug" placeholder="Ingrese La Nueva Contraseña"
+       name="password"
+       >
   </div>
   
     
