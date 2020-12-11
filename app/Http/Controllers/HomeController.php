@@ -6,6 +6,7 @@ use App\Categoria;
 use App\Producto;
 use App\User;
 use App\Comprado;
+use App\Calificacion;
 use App\Mail\ProductoComprado;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,7 @@ class HomeController extends Controller
         $datos['productos'] =Producto::where('nombre','like',"%$nombres%")->paginate(10);
 
    // $datos['productos']=Producto::paginate(10);
+      
       return view('buscar.listar',$datos);
 	}
 
@@ -95,7 +97,7 @@ class HomeController extends Controller
         //return view('encargado.Revisiones.index',compact('registro'));
 
         //return view('encargado.Revisiones.show',compact('producto'));
-     return redirect("/comprado")->with('status_success','Compra Realizada'); 
+     return redirect("/calificacion/create")->with('status_success','Compra Realizada'); 
        
       
     }
@@ -117,6 +119,14 @@ class HomeController extends Controller
 
         return view('supervisor.vendedor.show',compact('usuarios','contar'));
     }
-   
+
+     public function contador(){
+
+       $usuarios=User::orderBy('id','Asc')->paginate(10);
+
+      return view('contador.index',compact('usuarios'));
+    }
+
+    
 
 }

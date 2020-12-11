@@ -21,7 +21,8 @@ class InicioController extends Controller
           $empleados = DB::select('SELECT count(*) as cuantos from roles where name <> "Cliente"')[0]->cuantos;
           $productos =DB::table('productos')->count();
           $categorias = DB::table('categorias')->count();
-          return view('supervisor.tablero', compact('users','clientes','empleados','categorias','productos'));
+          $concesionados = DB::select('SELECT count(*) as cuantos from productos where concesionado = 2')[0]->cuantos;
+          return view('supervisor.tablero', compact('users','clientes','empleados','categorias','productos','concesionados'));
           break;
         case '2':
 

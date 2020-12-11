@@ -50,8 +50,12 @@
 @endforelse
 
 <div>
+  @can('haveaccess','comprar.create')
 <center><a href="{{ url('/comprar/'.$producto->id.'/comprar') }}"  class="btn btn-success">comprar</a></center>
+@endcan
+@can('haveaccess','pregunta.create')
 <a href="/comentario/{{ $producto->id }}" class="btn btn-info">Preguntar</a>
+@endcan
 </div>
 
 

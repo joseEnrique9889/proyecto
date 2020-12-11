@@ -19,7 +19,7 @@ class CategoriasControler extends Controller
      public function index()
     {
         //
-       // $this->authorize('haveaccess','categoria.index');
+        $this->authorize('haveaccess','categoria.index');
         $categorias=Categoria::orderBy('id','Asc')->paginate(10);
 
       return view('supervisor.categoria.index',compact('categorias'));
@@ -32,7 +32,7 @@ class CategoriasControler extends Controller
      */
     public function create()
     {
-       // $this->authorize('haveaccess','categoria.create');
+        $this->authorize('haveaccess','categoria.index');
 
         return view('supervisor.categoria.create');
     }
@@ -46,7 +46,7 @@ class CategoriasControler extends Controller
     public function store(Request $request)
     {
 
-         //$this->authorize('haveaccess','categoria.create');
+         $this->authorize('haveaccess','categoria.index');
 
        // $datosCategorias=request()->all();
         $datosCategorias=request()->except('_token');
@@ -70,7 +70,7 @@ class CategoriasControler extends Controller
      */
     public function show($id)
     {
-       // $this->authorize('haveaccess','categoria.show');
+        $this->authorize('haveaccess','categoria.index');
         $categoria= Categoria::findOrFail($id);
 
        return view('supervisor.categoria.show',compact('categoria'));
@@ -84,7 +84,7 @@ class CategoriasControler extends Controller
      */
     public function edit($id)
     {
-       // $this->authorize('haveaccess','categoria.edit');
+        $this->authorize('haveaccess','categoria.index');
         //devuelve todo el valor del id.
         $categoria= Categoria::findOrFail($id);
 
@@ -101,7 +101,7 @@ class CategoriasControler extends Controller
     public function update(Request $request, $id)
     {
         //
-       // $this->authorize('haveaccess','categoria.edit');
+       $this->authorize('haveaccess','categoria.index');
         $datosCategorias=request()->except(['_token','_method']);
 
        if ($request->hasFile('imagen')) {
@@ -128,7 +128,7 @@ class CategoriasControler extends Controller
      */
     public function destroy($id)
     {
-        //$this->authorize('haveaccess','categoria.destroy');
+        $this->authorize('haveaccess','categoria.index');
         //
         $categoria= Categoria::findOrFail($id);
 

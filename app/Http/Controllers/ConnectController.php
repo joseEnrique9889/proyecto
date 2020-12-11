@@ -12,14 +12,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ConnectController extends Controller
 {
+    //cerrar sesion
      public function __construct(){
         $this->middleware('guest')->except(['getLogout']);
     }
 
+    //login
     public function getLogin(){
     	return view('connect.login');
 
     }
+    // validar login
     public function postLogin(Request $request){
     	$rules =[
     		'email' => 'required|email',
@@ -38,7 +41,7 @@ class ConnectController extends Controller
     	else:
 
     		if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
-    			return redirect('/categoria');
+    			return redirect('/');
     		else:
     			return back()->with('message', 'Correo electronico o contraseña erronea')->with('typealert', 'danger');
     		endif;

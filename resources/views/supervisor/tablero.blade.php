@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'SUPERVISOR')
+@section('title', 'Tablero')
 @section('content')
 
 @switch(Auth::user()->id)
@@ -7,6 +7,7 @@
 <div class="container card ">
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
+            	 <div class="p-2 ">
 			<div class="card" style="width: 35rem;">
 				<a href="{{ url('/user')}}"><img  class="card-img-top" src="{{ url('static/images/usuerss.png') }}" alt="Card-img-cap"></a>
 					<div class="card-body">
@@ -17,14 +18,19 @@
 
 					</div>
 				</div>
+			</div>
+			 <div class="p-2 ">
 				<div class="card" style="width: 35rem;">
-				<a href="{{ url('/producto')}}"><img class="card-img-top" src="{{ url('static/images/productos.jpg') }}" alt="Card-img-cap"></a>
+				<a href="{{ url('/listaProdu')}}"><img class="card-img-top" src="{{ url('static/images/productos.jpg') }}" alt="Card-img-cap"></a>
 					<div class="card-body">
 						<h5 class="card-title">Productos</h5>
 						<p class="card-text">Registrados: {{ $productos }}</p>
+						<p class="card-text">concesionado: {{ $concesionados }}</p>
+</div>
 
 					</div>
 </div>
+ <div class="p-2 ">
 <div class="card" style="width: 35rem;">
 				<a href="{{ url('/categoria')}}"><img class="card-img-top" src="{{ url('static/images/categorias.png') }}" alt="Card-img-cap"></a>
 					<div class="card-body">
@@ -33,6 +39,7 @@
 
 					</div>
 				</ul>
+			</div>
 			</div>
 @break
 @case('2')

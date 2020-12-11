@@ -18,6 +18,7 @@ class ComentarioController extends Controller
     }
     public function index()
 {
+      $this->authorize('haveaccess','comentario.index');
     $comentarios =Comentario::all();
     
 
@@ -28,7 +29,7 @@ class ComentarioController extends Controller
  public function preguntas()
 {
    
-    
+     $this->authorize('haveaccess','pregunta.create');
        $comentarios = Comentario::where('user_id',Auth::id())->get();
         return view('Preguntas.preguntas',compact('comentarios'));
 
@@ -54,6 +55,7 @@ class ComentarioController extends Controller
     }
 
     public function edit($id){
+        $this->authorize('haveaccess','comentario.index');
          $comentario =Comentario::find($id);
         return view('Preguntas.edit',compact('comentario'));
     }
@@ -80,5 +82,12 @@ class ComentarioController extends Controller
 
             return redirect("/");
 
+    }
+
+    public function destroy($id){
+        $this->authorize('haveaccess','comentario.index');
+        $comentario= Comentario::findOrFail($id);
+         Comentario::destroy($id); 
+         return redirect('comentario');
     }
 }

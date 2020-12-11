@@ -36,18 +36,6 @@
             <a href="{{ url('/login') }}"><button class="btn-success btn-lg active">Iniciar Sesion</button></a>
             </u1>
         </ul>
-
-        
-
-				
-			</div>
-		</nav>
-
-		<div class="page">
-
-			
-	@section('content')
-	@show
 		</div>
 	</div>
 </body>

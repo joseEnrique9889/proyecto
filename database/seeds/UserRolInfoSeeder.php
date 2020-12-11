@@ -206,22 +206,53 @@ class UserRolInfoSeeder extends Seeder
       'description' => 'el usuario encargado puede cambiar la demas contraseña',
     ]);
 
+      $permissionHistorial= permission::create([
+      'name' => 'historial',
+      'slug' =>'historial.view',
+      'description' => 'el usuario supervisor puede ver el historial de un vendedor',
+    ]);
+
+       $permissionRole= permission::create([
+      'name' => 'roles',
+      'slug' =>'roles.view',
+      'description' => 'el usuario supervisor puede ver la lista de roles',
+    ]);
+
+       $permissionTablero= permission::create([
+        'name' => 'tablero',
+      'slug' =>'tablero.view',
+      'description' => 'el usuario supervisor,encargado y contador puede ver el tablero',
+       ]);
+
+       $permissionPregunta= permission::create([
+        'name' => 'pregunta',
+      'slug' =>'pregunta.create',
+      'description' => 'el usuario cliente puede agregar una pregunta',
+       ]);
+
+       $permissionComprar= permission::create([
+        'name' => 'comprar',
+      'slug' =>'comprar.create',
+      'description' => 'el usuario cliente puede comprar',
+       ]);
+
+
+
+
+
+
 
  		
-    //$rolcontador->permissions()->sync([ $permissionDestroy->id]);
-    //$rolaencargado->permissions()->sync([ $permissionEdit->id]);
-    $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionListProduct->id,$permissionRestPass->id, $permissionEdit->id, $permissionIndex->id,$permissionEdit->id,$permissionDestroy->id,$permissionShow->id]);
-
-    $rolcontador->permissions()->sync([ $permissionSide->id]);
-    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionSide->id,$permissionComen->id,$permissionRev->id, $permissionRestPassCo->id]);
+   //permisos admin
+    $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionRestPass->id, $permissionEdit->id, $permissionIndex->id,$permissionEdit->id,$permissionDestroy->id,$permissionShow->id,$permissionHistorial->id,$permissionRole->id,$permissionTablero->id]);
+//permisos contador
+    $rolcontador->permissions()->sync([ $permissionSide->id,$permissionTablero->id]);
     
-    $roluser->permissions()->sync([ $permissionIndex->id,$permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id]);
-   // $roluser->permissions()->sync([ ]);
-    //$roluser->permissions()->sync([ $permissionUserEdit->id]);
-    
+   //permiso encargado 
+    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionIndex->id,$permissionShow->id,$permissionSide->id,$permissionComen->id,$permissionRev->id, $permissionRestPassCo->id,$permissionTablero->id]);
+    //permisos cliente
+    $roluser->permissions()->sync([ $permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id,$permissionListProduct->id,$permissionPregunta->id, $permissionComprar->id]);
    
- 		//tabla de permisos de roles
- 		//$roladmin->permissions()->sync( $permission_all );
 
 
     

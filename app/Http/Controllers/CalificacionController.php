@@ -9,6 +9,16 @@ use App\User;
 
 class CalificacionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
+    public function index(){
+        $calificaciones=Calificacion::orderBy('id','Asc')->paginate(10);
+
+      return view('supervisor.calificacion.index',compact('calificaciones'));
+    }
+    
     public function create()
     {
         $usuarios = User::where('id',Auth::id())->get();
@@ -32,7 +42,7 @@ class CalificacionController extends Controller
        Calificacion::insert($datosCalificacion);
         //return response()->json($datosCategorias);
         //return view('supervisor.categoria.index');
-       return redirect('calificacion');
+       return redirect('/comprado');
     }
 
     /**

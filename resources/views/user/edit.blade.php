@@ -32,13 +32,6 @@
        >
   </div>
 
-
- 
-
-
-
-
-
    <div class="form-group">
     <label for="exampleFormControlInput1">Imagen</label>
     <br />

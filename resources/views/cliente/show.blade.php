@@ -30,7 +30,9 @@
  @csrf
   @method('PUT')
 
+@can('haveaccess','comprar.create')
   <center><button type="submit" class="btn btn-success">Confirmar compra</button>
+    @endcan
 </form>
    
 @endsection

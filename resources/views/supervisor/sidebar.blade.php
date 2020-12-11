@@ -23,31 +23,44 @@
 			</form>
 		</ul>
 		<ul>
-
+			@can('haveaccess','tablero.view')
 			<li><a href="{{ url('/tablero')}}"><i class="fas fa-table"></i>Tablero</a></i>
+			@endcan
+
+			<li><a href="{{ url('/') }}"><i class="fas fa-th-list"></i>Lista de Categoria</a></li>
+			<li><a href="{{ url('/listaProdu') }}"><i class="fas fa-th-list"></i>Lista de Productos</a></li>
+			
 				@can('haveaccess','categoria.index')
-			<li><a href="{{ url('/categoria')}}"><i class="fas fa-table"></i>Categoria</a></i>
+			<li><a href="{{ url('/categoria')}}"><i class="fas fa-table"></i>Agregar Categoria</a></i>
 				@endcan
 				@can('haveaccess','producto.index')
 			<li><a href="{{ url('/producto')}}"><i class="fas fa-poll-h"></i>Productos Registrado</a></i>
 				@endcan
 					@can('haveaccess','revisar.index')
-			<li><a href="{{ url('/Revisiones') }}"><i class="fas fa-poll-h"></i>Productos Por Cosignar</a></li>
+			<li><a href="{{ url('/Revisiones') }}"><i class="fas fa-poll-h"></i>Productos por Concesionar</a></li>
 
 			@endcan
 				@can('haveaccess','comentario.index')
 			<li><a href="{{ url('/comentario') }}"><i class="fas fa-users"></i>Moderaciones</a></li>
 				@endcan
 
+				@can('haveaccess','pregunta.create')
+			<li><a href="{{ url('/pregunta') }}"><i class="fas fa-users"></i>Preguntas Realizadas</a></li>
+				@endcan
 
+
+
+				@can('haveaccess','user.index')
 			<li><a href="{{ route('user.index')}}"><i class="fas fa-users"></i>Usuarios Registrado</a></i>
-				
-				
+				@endcan
+			 @can('haveaccess','roles.view')
 			<li><a href="{{ route('role.index')}}"><i class="fas fa-database"></i>Lista de Roles</a></i>
-				
-			<li><a href="{{ url('/restPassword')}}"><i class="fas fa-key"></i>Restablecer contraseña</a></i>
-			<li><a href="{{ url('/historia')}}"><i class="fas fa-history"></i>historial del vendedor</a></i>
-			<li><a href="{{ url('/kardex')}}"><i class="fas fa-file-alt"></i>kardex de un producto</a></i>
+				@endcan
+			 @can('haveaccess','historial.view')
+			<li><a href="{{ url('/usuarios')}}"><i class="fas fa-history"></i>historial del vendedor</a></i>
+				@endcan
+
+			<li><a href="{{ url('/Productos')}}"><i class="fas fa-file-alt"></i>kardex de un producto</a></i>
 		</ul>
 	</div>
 	

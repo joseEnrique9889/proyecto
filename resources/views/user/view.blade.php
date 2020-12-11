@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel shadow">
   <div class="inside">
- <CENTER><h2>Hola {{ old('name', $user->name) }} estos son tus datos</h3></h2></CENTER>
+ <CENTER><h2>Hola {{ Auth::user()->name }} estos son los Datos de {{ old('name', $user->name) }} </h3></h2></CENTER>
 
  <div class="card-body">
   @include('coustom.message')

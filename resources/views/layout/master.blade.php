@@ -16,12 +16,28 @@
 			$('[data-toggle="tooltip"]').tooltip()
 		});
 	</script>
+
+	 <script >
+	var contador;
+	function calificar(item){
+		console.log(item);
+		contador=intem.id[0];
+		let nombre = item.id.substring(1);
+		for(let i=0;i<5;i++){
+			if (i<contador) {
+				document.getElementById((i+1)+nombre).style.color="orange";
+			}
+		}
+
+	}
+</script>
 </head>
 <body class="fondo">
 	<div class="wrapper">
 	@can('haveaccess','sidebar.show')
 	<div class="col1">@include('supervisor.sidebar')</div>
 	@endcan
+	@can('haveaccess','sidebar.show')
 	<div class="col2">
 		<nav class="navbar navbar-expand-lg shadow">
 			<div class="collapse navbar-collapse">
@@ -38,6 +54,7 @@
         </ul>
 			</div>
 		</nav>
+		@endcan
 		
 		
 

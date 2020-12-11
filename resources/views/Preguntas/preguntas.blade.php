@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'ADMINISTRADOR')
+@section('title', 'Preguntas Realizadas')
 @section('content')
 <div class="panel shadow">
   <div class="inside">

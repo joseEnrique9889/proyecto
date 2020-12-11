@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Mostrar')
+@section('title', 'Pregunta')
 @section('content')
 <div class="container-fluid">
   <div class="panel shadow">

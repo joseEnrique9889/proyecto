@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Gate;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//prueba
 Route::get('/','HomeController@getCat');
+Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
 Route::get('/listaProdu','HomeController@getProd');
 
 Route::get('Productos','HomeController@kardex');
 
-Route::get('listar_por_categoria/{nombre}', 'HomeController@getsearch');
+
 
 Route::get('comentario/{producto}','ComentarioController@create');
 
@@ -30,14 +31,16 @@ Route::post('comentario','ComentarioController@store');
 Route::get('comentario/{comentario}/show','ComentarioController@show');
 Route::get('comentario/{comentario}/edit','ComentarioController@edit');
 Route::put('comentario/{comentario}','ComentarioController@update');
-
+Route::delete('comentario/{comentario}','ComentarioController@destroy');
 
 Route::get('calificacion/create','CalificacionController@create');
 Route::post('calificacion','CalificacionController@store');
+Route::get('calificacion','CalificacionController@index');
 
 Route::get('comprar/{comprar}/comprar','HomeController@comprar');
 Route::get('kardex/{kardex}/producto','HomeController@detalle');
 Route::put('comprar/{comprar}','HomeController@update');
+
 
 Route::get('comprado','HomeController@index');
 
@@ -110,3 +113,5 @@ Route::put('contraseña/{user}', 'UserController@updatePass');
 Route::get('usuarios','HomeController@registrado');
 
 Route::get('usuarios/{usuarios}/historial','HomeController@historial');
+
+Route::get('contador','HomeController@contador');

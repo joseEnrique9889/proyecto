@@ -4,6 +4,12 @@
 <div class="panel shadow">
   <div class="inside">
     @include('coustom.message')
+
+    <div class="boton ">
+
+<a href="{{ url('/producto/create') }}" role="button" class="btn btn-large btn-success"  data-toggle="modal" style="margin-left: 90%; width: 10%"  >Proponer</a></
+
+</div>
     <table class="table">
   <thead> 
  <td colspan="13"><center><label>Lista de Productos</div></label></center></td>
@@ -15,6 +21,7 @@
       <th scope="col">imagen</th>
       <th scope="col">cantidad</th>
       <th scope="col">precio</th>
+      <th scope="col">Comprado</th>
       <th scope="col">estado</th>
       <th colspan="3"><CENTER>ACCION</CENTE></th>
     </tr>
@@ -43,6 +50,7 @@
     </th>
     <th >{{ $producto->cantidad}}</th>
     <th >{{ $producto->precio}}</th>
+    <th>{{ $producto->comprado }}</th>
     <th >{{ $producto->estado}}</th>
 
  @if($producto->concesionado<=1)
@@ -100,11 +108,7 @@
       <th class="p-3 mb-2 bg-success text-white">Producto que fue aceptado</th>
   </tr>
 </table>
-<div class="boton">
 
-<center><a href="{{ url('/producto/create') }}" role="button" class="btn btn-large btn-info" data-toggle="modal">crear</a></center>
-
-</div>
 </div>
   </div>
 

@@ -13,17 +13,20 @@ class RevisarControler extends Controller
    public function index()
     {
 
+      $this->authorize('haveaccess','revisar.index');
        $productos =Revision::all();
        return view('encargado.Revisiones.index',compact('productos'));
     }
      public function show($id)
     {
+      $this->authorize('haveaccess','revisar.index');
        $producto =Revision::findOrFail($id);
        return view('encargado.Revisiones.show',compact('producto'));
     }
      public function update(Request $request, $id)
     {
      // $datosProdu=request()->except(['_token','_method']);
+        $this->authorize('haveaccess','revisar.index');
       $valores = $request->except(['_token','_method']);
       Revision::where('id','=',$id)->update($valores);
 

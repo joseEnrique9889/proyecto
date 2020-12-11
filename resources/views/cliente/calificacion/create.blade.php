@@ -7,7 +7,11 @@
   <div class="inside">
     <form action="{{ url('/calificacion') }}" method="POST" enctype="multipart/form-data">
       @csrf
-    <center><h3>Tu Experencia es muy importante para nosotros</h3></center>
+
+
+    <h3>Tu Experencia es muy importante para nosotros</h3></center>
+
+  </div>
    <div class="form-group">
     <label for="experencia">De 1 a 10 como fue tu experencia en la pagina</label>
     <select name="experencia" id="experencia">

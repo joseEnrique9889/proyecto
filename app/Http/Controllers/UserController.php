@@ -20,7 +20,8 @@ class UserController extends Controller
     }
     public function index()
     {
-      
+      $this->authorize('haveaccess','user.index');
+
          $users = User::with('roles')->orderBy('id','Asc')->paginate(3);
 
           
@@ -80,42 +81,26 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
-    {       
-        //return $role;
+    { 
        $this->authorize('update', [$user, ['user.edit','userpropio.edit'] ]);
-
         $roles= Role::orderBy('name')->get();
-
-        //return $roles;
-       // $user= User::findOrFail($user);
         return view('user.edit', compact('roles', 'user'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,User $user)
     {
         $request->validate([
         'name' => 'required|max:50|unique:users,name,'.$user->id,
-       // 'apellido'=> 'required|max:50|unique:users,apellido,'.$user->id,
         'email' => 'required|max:50|unique:users,email,'.$user->id,
         
        ]);
 
         $datosUsuario=request()->except(['_token','_method']);
-
         if ($request->hasFile('imagen')) {
-
-           // $user= User::findOrFail($user);
 
             Storage::delete('public/'.$user->imagen);
             $user['imagen']=$request->file('imagen')->store('uploads/usuario','public');
         }
+        //si la contraseña esta en blanco no lo modificamos
         if(is_null($datosUsuario['password']))
             unset($datosUsuario['password']);
         else
@@ -124,9 +109,7 @@ class UserController extends Controller
 
          $user->update($datosUsuario);
 
-
          $user->roles()->sync($request->get('roles'));  
-       //} 
     
     return redirect()->route('user.index')->with('status_success','Usuario Actualizado Correctamente');
 
