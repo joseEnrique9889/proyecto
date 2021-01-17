@@ -30,8 +30,6 @@
     </tr>
 <tbody class="body1">
 @foreach($usuarios->producto as $producto)
-
-
  <tr>
   <td>{{ $producto->id }}</td>
     <td scope="row">{{ $producto->nombre}} <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="" width="100"></td>

@@ -176,6 +176,12 @@ class UserRolInfoSeeder extends Seeder
       'description' => 'el usuario encargado puede moderar',
     ]);
 
+     $permissionPregunta= permission::create([
+        'name' => 'pregunta',
+      'slug' =>'pregunta.create',
+      'description' => 'el usuario cliente puede agregar una pregunta',
+       ]);
+
     $permissionRev= permission::create([
       'name' => 'puede revisar y concesionar un producto',
       'slug' =>'revisar.index',
@@ -224,24 +230,13 @@ class UserRolInfoSeeder extends Seeder
       'description' => 'el usuario supervisor,encargado y contador puede ver el tablero',
        ]);
 
-       $permissionPregunta= permission::create([
-        'name' => 'pregunta',
-      'slug' =>'pregunta.create',
-      'description' => 'el usuario cliente puede agregar una pregunta',
-       ]);
+      
 
        $permissionComprar= permission::create([
         'name' => 'comprar',
       'slug' =>'comprar.create',
       'description' => 'el usuario cliente puede comprar',
        ]);
-
-
-
-
-
-
-
  		
    //permisos admin
     $roladmin->permissions()->sync([ $permissionSide->id,$permissionListCat->id,$permissionRestPass->id, $permissionEdit->id, $permissionIndex->id,$permissionEdit->id,$permissionDestroy->id,$permissionShow->id,$permissionHistorial->id,$permissionRole->id,$permissionTablero->id]);

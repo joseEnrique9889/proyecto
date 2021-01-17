@@ -115,3 +115,5 @@ Route::get('usuarios','HomeController@registrado');
 Route::get('usuarios/{usuarios}/historial','HomeController@historial');
 
 Route::get('contador','HomeController@contador');
+
+Route::post('/register/check', 'EmailAvailable@check')->name('register.check');

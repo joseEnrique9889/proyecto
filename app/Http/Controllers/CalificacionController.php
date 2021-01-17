@@ -34,23 +34,13 @@ class CalificacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-      //  $this->authorize('haveaccess','producto.create');
-        // $datosCategorias=request()->all();
         $datosCalificacion=request()->except('_token');
-        //validamos que el campo imagen tenga algo
+        
        Calificacion::insert($datosCalificacion);
-        //return response()->json($datosCategorias);
-        //return view('supervisor.categoria.index');
+    
        return redirect('/comprado');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
        // $this->authorize('haveaccess','producto.show');

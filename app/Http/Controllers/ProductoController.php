@@ -21,20 +21,10 @@ class ProductoController extends Controller
     }
    public function index()
     {
-
-       // $this->authorize('haveaccess','producto.index');
-        
-        //$datos['productos']=Producto::paginate(5);
         $productos = Producto::where('user_id',Auth::id())->get();
 
       return view('supervisor.producto.index',compact('productos'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $usuarios = User::where('id',Auth::id())->get();
@@ -42,27 +32,14 @@ class ProductoController extends Controller
        // $this->authorize('haveaccess','producto.create');
         return view('supervisor.producto.create',compact('cat','usuarios'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-      //  $this->authorize('haveaccess','producto.create');
-        // $datosCategorias=request()->all();
         $datosProductos=request()->except('_token');
         //validamos que el campo imagen tenga algo
-
         if ($request->hasFile('imagen')) {
             $datosProductos['imagen']=$request->file('imagen')->store('uploads/producto','public');
         }
        Producto::insert($datosProductos);
-        //return response()->json($datosCategorias);
-        //return view('supervisor.categoria.index');
        return redirect('producto')->with('status_success','Producto Creado Correctamente');;
     }
 

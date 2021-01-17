@@ -54,12 +54,6 @@ class HomeController extends Controller
       return view('supervisor.kardex',compact('productos'));
     }
 
-	public function comprar($id)
-    {
-       $producto =Producto::findOrFail($id);
-       return view('cliente.show',compact('producto'));
-    }
-
     public function detalle($id)
     {
        $producto =Producto::findOrFail($id);
@@ -67,8 +61,11 @@ class HomeController extends Controller
        return view('cliente.detalle',compact('producto','comentarios'));
     }
 
-
-   
+	public function comprar($id)
+    {
+       $producto =Producto::findOrFail($id);
+       return view('cliente.show',compact('producto'));
+    }
 
     public function update(Request $request, $id)
     {
@@ -92,11 +89,7 @@ class HomeController extends Controller
 
       $user =User::find($registro->user_id);
 
-
    Mail::to($user->email)->send(new ProductoComprado($registro));
-        //return view('encargado.Revisiones.index',compact('registro'));
-
-        //return view('encargado.Revisiones.show',compact('producto'));
      return redirect("/calificacion/create")->with('status_success','Compra Realizada'); 
        
       

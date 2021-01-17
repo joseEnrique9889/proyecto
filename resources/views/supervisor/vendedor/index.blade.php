@@ -22,11 +22,13 @@
   <tbody class="body1">
     @forelse($usuarios as $usuario)
     <tr>
+      @if($usuario->id>=4)
     <td scope="row">{{ $usuario->name}} <img src="{{ asset('storage').'/'.$usuario->imagen}}" alt="" width="100"></td>
         <td>
           <a href="{{ url('/usuarios/'.$usuario->id.'/historial') }}" role="button" class="btn btn-warning" data-toggle="modal">Historial</a>
           
         </td>
+        @endif
     </tr>
 
      @empty

@@ -25,23 +25,16 @@ class RevisarControler extends Controller
     }
      public function update(Request $request, $id)
     {
-     // $datosProdu=request()->except(['_token','_method']);
         $this->authorize('haveaccess','revisar.index');
       $valores = $request->except(['_token','_method']);
       Revision::where('id','=',$id)->update($valores);
-
-        //$registro= Revision::findOrFail($id);
+      //revisamos si los valores del motivo fue ingresado entonces no cambiara el concesionado en 2. 
       if (!isset($valores['motivo'])) $valores['concesionado']=2;
+      //si esto es falso entonces no los cambie en 1 
       else $valores['concesionado']=1;
       $registro= Revision::find($id);
       $registro->fill($valores);
       $registro->save();
-
-    
-
-        //return view('encargado.Revisiones.index',compact('registro'));
-
-        //return view('encargado.Revisiones.show',compact('producto'));
      return redirect("/Revisiones")->with('status_success','Revision Realizada'); 
        
       

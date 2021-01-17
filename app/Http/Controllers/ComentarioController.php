@@ -63,7 +63,6 @@ class ComentarioController extends Controller
     public function show($id){
         $comentario =Comentario::find($id);
         return view('Preguntas.responder',compact('comentario'));
-    
 
    }
 
@@ -71,12 +70,16 @@ class ComentarioController extends Controller
     {
         $valores = $resquest->all();
         $registro = Comentario::find($id);
+        //verifica que si el usuario tiene el id que siempre en nuestra bd
+        //sera el encargado entonces que me guarde el valor de la fecha 
         if ($resquest->user()->id == 2) 
                 $valores['p_autorizada']= date('Y-m-d H:i:s');
             else
+                //si eso es falso entonces que en respuesta autorizada.
                 $valores['r_autorizada']= date('Y-m-d H:i:s');
-
+            //ingresamos los valores en nuestr variable registro
             $registro->fill($valores);
+            //guardamos nuestros valores
             $registro->save();
 
 

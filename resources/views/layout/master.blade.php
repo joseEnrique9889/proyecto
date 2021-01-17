@@ -31,6 +31,9 @@
 
 	}
 </script>
+  <script src="/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/axios.js"></script>
+  @yield('escripts')
 </head>
 <body class="fondo">
 	<div class="wrapper">

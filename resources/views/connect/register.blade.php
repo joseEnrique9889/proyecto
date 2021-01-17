@@ -36,13 +36,17 @@
 	{!! Form::file('imagen', null, ['class' => 'form-control', 'required']) !!}
 	</div>
 	
-	<label for="email" class="mtop16">Correo Electronico:</label>
+	
+
+		</div>
+		 <div class="form-gorup">
+   <label for="email" class="mtop16">Correo Electronico:</label>
 	<div class="input-group mb-2">
 		<div class="input-group-prepend">
 			<div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
-		</div>
-
-	{!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
+    <input id="email" type="email" class="form-control" name="email"></div>
+    <span id="error_email"></span>
+    </div>
 	</div>
 	<label for="password" class="mtop16">Contraseña:</label>
 	<div class="input-group mb-2">
@@ -62,6 +66,57 @@
 	</div>
 	{!! Form::submit('Registrarse', ['class' => 'btn btn-success mtop16']) !!}
 	{!! Form::close() !!}
+	<script>
+$(document).ready(function(){
+
+$('#email').blur(function(){
+    var error_email = '';
+    var email = $('#email').val();
+    var _token = $('input[name="_token"]').val();
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if($.trim(email).length > 0)
+    {
+        if(!filter.test(email))
+        {				
+            $('#error_email').html('<label  class="bg-danger text-white"><img src="{{ url('/static/images/correo.png') }}">Correo Invalido.Ingrese un correo valido</label>');
+            $('#email').addClass('has-error');
+            $('#register').attr('disabled', 'disabled');
+        }
+        else
+        {
+            $.ajax({
+                url:"{{ route('register.check') }}",
+                method:"POST",
+                data:{email:email, _token:_token},
+                success:function(result)
+                {
+                    if(result == 'unique')
+                    {
+                        $('#error_email').html('<label class="bg-success text-white"><img src="{{ url('/static/images/alegre.png') }}">Correo Disponible </label>');
+                        $('#email').removeClass('has-error');
+                        $('#register').attr('disabled', false);
+                    }
+                    else
+                    {
+                        $('#error_email').html('<label class="bg-danger text-white"><img src="{{ url('/static/images/triste.png') }}">Correo no Disponible</label>');
+                        $('#email').addClass('has-error');
+                        $('#register').attr('disabled', 'disabled');
+                    }
+                }
+            })
+        }
+    }
+    else
+    {
+        $('#error_email').html('<label class="bg-warning text-dark"><img src="{{ url('/static/images/correo.png') }}">correo requerido Por favor ingrese su correo</label>');
+        $('#email').addClass('has-error');
+        $('#register').attr('disabled', 'disabled');
+    }
+});
+
+});
+</script>
+
 	@if(Session::has('message'))
 	<div class="container">
 		<div class="metop16 alert alert-{{ Session::get('typealert') }}" style="display:none;">
@@ -90,4 +145,4 @@
 	
 </div>
 
-@stop
+@endsection
