@@ -33,13 +33,13 @@
     </td>
      <td>
       
-      <a href="{{ url('/categoria/'.$categoria->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
+      <a href="{{ url('/categoria/'.$categoria->id.'/edit') }}" role="button" class="btn btn-success">Editar</a>
       
     </td>
 
         <td>
          
-          <a href="{{ url('/categoria/'.$categoria->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
+          <a href="{{ url('/categoria/'.$categoria->id.'/show') }}" role="button" class="btn btn-warning">Mostrar</a>
           
         </td>
 
@@ -61,7 +61,7 @@
          <td>
 
       
-      <a href="{{ url('/subcategoria/'.$categoria->id.'/subcategoria') }}" role="button" class="btn btn-success" data-toggle="modal">Ver Subcategoria</a>
+      <a href="{{ url('/subcategoria/'.$categoria->id.'/subcategoria') }}" role="button" class="btn btn-success">Ver Subcategoria</a>
       
     </td>
     @endif
@@ -80,7 +80,7 @@
 {{ $categorias->links() }}
 <div class="boton">
   
-<center><a href="{{ url('/categoria/create') }}" role="button" class="btn btn-large btn-info" data-toggle="modal">crear</a></center>
+<center><a href="{{ url('/categoria/create') }}" role="button" class="btn btn-large btn-info">crear</a></center>
 
 </div>
 </div>

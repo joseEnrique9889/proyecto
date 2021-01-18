@@ -131,3 +131,8 @@ Route::get('subcrear/{subcrear}/create','SubCategoriaController@create');
 Route::post('subcrear','SubCategoriaController@store');
 Route::get('lista','SubCategoriaController@lista');
 Route::get('categoria/{producto}/agregar','ProductoController@agregar');
+
+//routas concesionar un producto ajax
+
+Route::get('aceptados','AjaxConcesionadoController@index');
+Route::put('_Concesionar/{id}', 'AjaxConcesionadoController@Concesionado');

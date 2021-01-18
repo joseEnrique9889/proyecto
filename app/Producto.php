@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
 	protected $fillable = [
-        'id','nombre', 'descripcion', 'imagen', 'cantidad', 'precio', 'estado','concesionado','comprado',
+        'id','nombre', 'descripcion', 'imagen', 'cantidad', 'precio', 'estado','concesionado','comprado','recibido'
     ];
 
     public function comentario(){

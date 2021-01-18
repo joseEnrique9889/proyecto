@@ -33,9 +33,9 @@ class HomeController extends Controller
       return view('buscar.listar',$datos);
 	}
 
-	public function getsearch($nombre){
+	public function getsearch($id){
 	
-		$categoria=Categoria::where('nombre', $nombre)->pluck('id')->first();
+		$categoria=Categoria::where('id', $id)->pluck('id')->first();
 
 		$productos =Producto::where('categoria_id', $categoria)->orderBy('id','Desc')->paginate(5);
 

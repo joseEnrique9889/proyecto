@@ -34,7 +34,7 @@
             <ul class="nav">
                 @forelse($productos as $producto)
 
-                   @if ($producto->concesionado==2)
+                   @if ($producto->concesionado==3)
                     <div class="p-4 ">
                 <div class="card" style="width: 25rem;">
                   <img class="card-img-top" src="{{ asset('storage').'/'.$producto->imagen}}" alt="Card image cap" width="700">

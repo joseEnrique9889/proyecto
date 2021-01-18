@@ -194,6 +194,13 @@ class UserRolInfoSeeder extends Seeder
       'description' => 'el usuario supervisor puede ver la lista de categoria',
     ]);
 
+
+     $permissionListAcep= permission::create([
+      'name' => 'puede ver la lista de producto aceptado',
+      'slug' =>'aceptados.index',
+      'description' => 'el usuario encargado puede ver la lista de producto aceptados',
+    ]);
+
      $permissionListProduct= permission::create([
       'name' => 'puede ver la lista de producto',
       'slug' =>'producto.index',
@@ -244,7 +251,7 @@ class UserRolInfoSeeder extends Seeder
     $rolcontador->permissions()->sync([ $permissionSide->id,$permissionTablero->id]);
     
    //permiso encargado 
-    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionIndex->id,$permissionShow->id,$permissionSide->id,$permissionComen->id,$permissionRev->id, $permissionRestPassCo->id,$permissionTablero->id]);
+    $rolaencargado->permissions()->sync([ $permissionEdit->id,$permissionIndex->id,$permissionShow->id,$permissionSide->id,$permissionComen->id,$permissionRev->id, $permissionRestPassCo->id,$permissionTablero->id,$permissionListAcep->id]);
     //permisos cliente
     $roluser->permissions()->sync([ $permissionUserShow->id,$permissionUserEdit->id,$permissionSide->id,$permissionListProduct->id,$permissionPregunta->id, $permissionComprar->id]);
    

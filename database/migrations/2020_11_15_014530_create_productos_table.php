@@ -24,6 +24,7 @@ class CreateProductosTable extends Migration
             $table->string('estado');
             //$table->string('categoria');
             //$table->char('activo',2);
+            $table->enum('recibido', ['recibido','no recibido'])->default('no recibido');
             $table->tinyInteger('concesionado')->nullable();
             $table->string('motivo')->nullable();
             $table->tinyInteger('comprado')->nullable()->default(0);

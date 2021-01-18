@@ -7,7 +7,7 @@
 
     <div class="boton ">
 
-<a href="{{ url('/lista') }}" role="button" class="btn btn-large btn-success"  data-toggle="modal" style="margin-left: 90%; width: 10%"  >Proponer</a></
+<a href="{{ url('/lista') }}" role="button" class="btn btn-large btn-success"   style="margin-left: 90%; width: 10%"  >Proponer</a></
 
 </div>
     <table class="table">
@@ -31,12 +31,15 @@
     @forelse($productos as $producto)
 
     <tr @if ($producto->concesionado==2)
-     class="p-3 mb-2 bg-success text-white"
+     class="p-3 mb-2 bg-info text-white"
      
       @endif
       
        @if ($producto->concesionado==1)
     class="p-3 mb-2 bg-danger text-white"
+     @endif
+     @if ($producto->concesionado==3)
+    class="p-3 mb-2 bg-success text-white"
      @endif
      class="p-3 mb-2 bg-warning text-dark"
       >
@@ -56,20 +59,20 @@
  @if($producto->concesionado<=1)
      <th>
     
-      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Editar</a>
+      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success">Editar</a>
    
     </th>
        @endif
-@if($producto->concesionado==2)
+@if($producto->concesionado>=2)
        <th>
     
-      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success" data-toggle="modal">Cambiar imagen</a>
+      <a href="{{ url('/producto/'.$producto->id.'/edit') }}" role="button" class="btn btn-success">Cambiar imagen</a>
    
     </th>
     @endif
         <th >
          
-          <a href="{{ url('/producto/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Mostrar</a>
+          <a href="{{ url('/producto/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" >Mostrar</a>
         
         </th>
         @if($producto->concesionado<=1)
@@ -103,10 +106,16 @@
     
       <th class="p-3 mb-2 bg-danger text-white">Producto que fue rechazado Pero Tiene Observaciones</th>
   </tr>
+  
   <tr>
     
-      <th class="p-3 mb-2 bg-success text-white">Producto que fue aceptado</th>
+      <th class="p-3 mb-2 bg-info text-white">Producto que fue aceptado</th>
   </tr>
+  <tr>
+    
+      <th class="p-3 mb-2 bg-success text-white">Producto que fue Recibido Fisicamente</th>
+  </tr>
+  
 </table>
 
 </div>

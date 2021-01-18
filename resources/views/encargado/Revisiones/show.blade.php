@@ -59,7 +59,7 @@
 <form action="/Revisiones/{{ $producto->id  }}" method="post">
  @csrf
   @method('PUT')
-  <center><button type="submit" class="btn-success">Concesionar</button></center>
+  <center><button type="submit" class="btn-success">Aceptar</button></center>
 </form>
 </div>
    

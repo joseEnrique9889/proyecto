@@ -8,9 +8,21 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	 <script src="https://kit.fontawesome.com/6c52bb4677.js" crossorigin="anonymous"></script>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+	
+ <script src="/bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
+	 <script src="/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/js/axios.js"></script>
+  @yield('escripts')
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	
 	<script>
 		$(document).ready(function(){
 			$('[data-toggle="tooltip"]').tooltip()
@@ -31,9 +43,7 @@
 
 	}
 </script>
-  <script src="/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/axios.js"></script>
-  @yield('escripts')
+ 
 </head>
 <body class="fondo">
 	<div class="wrapper">

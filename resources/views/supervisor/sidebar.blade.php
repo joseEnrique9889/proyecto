@@ -37,9 +37,13 @@
 			<li><a href="{{ url('/producto')}}"><i class="fas fa-poll-h"></i>Productos Registrado</a></i>
 				@endcan
 					@can('haveaccess','revisar.index')
-			<li><a href="{{ url('/Revisiones') }}"><i class="fas fa-poll-h"></i>Productos por Concesionar</a></li>
-
+			<li><a href="{{ url('/Revisiones') }}"><i class="fas fa-poll-h"></i>Productos por Revisar</a></li>
 			@endcan
+
+			@can('haveaccess','aceptados.index')
+				<li><a href="{{ url('/aceptados') }}"><i class="fas fa-poll-h"></i>Productos por Concesionar</a></li>
+				@endcan
+
 				@can('haveaccess','comentario.index')
 			<li><a href="{{ url('/comentario') }}"><i class="fas fa-users"></i>Moderaciones</a></li>
 				@endcan

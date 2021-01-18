@@ -37,7 +37,7 @@
                 <h5 class="card-title">{{ $categoria->nombre }}</h5>
     <p class="card-text">{{ $categoria->descripcion }}</p>
      
-    <a href="{{ url('/listar_por_categoria/'.$categoria->nombre) }}" class="btn btn-primary">Ver lista de Producto</a>
+    <a href="{{ url('/listar_por_categoria/'.$categoria->id) }}" class="btn btn-primary">Ver lista de Producto</a>
 
   </div>
  

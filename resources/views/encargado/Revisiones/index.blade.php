@@ -23,7 +23,7 @@
     <td >{{ $producto->precio}}</td>
     <td >{{ $producto->categoria->nombre }}</td>
     <td scope="row">{{ $producto->descripcion}}</td>
-    <td scope="row"><a href="{{ url('/Revisiones/'.$producto->id.'/show') }}" role="button" class="btn btn-warning" data-toggle="modal">Revisar</a></td> 
+    <td scope="row"><a href="{{ url('/Revisiones/'.$producto->id.'/show') }}" role="button" class="btn btn-warning">Revisar</a></td> 
   </tr>
    @empty
    <tr>
