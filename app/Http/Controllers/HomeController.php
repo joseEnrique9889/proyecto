@@ -22,6 +22,7 @@ class HomeController extends Controller
 
       return view('welcome',$datos);
 	}
+  
 	public function getProd(Request $request){
 
     $nombres = $request->get('buscar');

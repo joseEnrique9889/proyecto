@@ -25,6 +25,10 @@ class Producto extends Model
     	public function usuario(){
     		return $this->belongsTo('App\User');
     	}
+
+        public function list(){
+            return $this->hasMany('App\Categoria','parent_id','categoria_id');
+        }
     
 
 }

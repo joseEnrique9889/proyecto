@@ -28,23 +28,23 @@
     
     <div >
             <ul class="nav ">
-                @forelse($categorias as $categoria)
-                 @if($categoria->subcategoria=='no') 
+                @forelse($subcat->subCategori as $categoria)
+                 
  <div class="p-4 ">
                 <div class="card mtop16" style="width: 35rem;">
                   <img class="card-img-top" src="{{ asset('storage').'/'.$categoria->imagen}}" alt="Card image cap" width="700">
                  <div class="card-body">
                 <h5 class="card-title">{{ $categoria->nombre }}</h5>
     <p class="card-text">{{ $categoria->descripcion }}</p>
-   
-    <center><a href="{{ url('/subcat/'.$categoria->id.'/subcat') }}" class="btn btn-primary">Ver Subcategorias</a></center>
+     
+    <a href="{{ url('/listar_por_categoria/'.$categoria->nombre) }}" class="btn btn-primary">Ver lista de Producto</a>
 
   </div>
-   @endif
+ 
   </div>
 </div>   
      @empty  
-      <h3>Sin Caregorias Registrado</h3>           
+      <h3>Sin SubCategoria Registrada</h3>           
                 @endforelse
 
 

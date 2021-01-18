@@ -7,7 +7,7 @@
 
     <div class="boton ">
 
-<a href="{{ url('/producto/create') }}" role="button" class="btn btn-large btn-success"  data-toggle="modal" style="margin-left: 90%; width: 10%"  >Proponer</a></
+<a href="{{ url('/lista') }}" role="button" class="btn btn-large btn-success"  data-toggle="modal" style="margin-left: 90%; width: 10%"  >Proponer</a></
 
 </div>
     <table class="table">
@@ -16,7 +16,7 @@
     <tr >
       <th scope="col">id</th>
       <th scope="col">Nombre</th>
-      <th scope="col">categoria</th>
+      <th scope="col">SubCategoria</th>
       <th scope="col">Descripcion</th>
       <th scope="col">imagen</th>
       <th scope="col">cantidad</th>

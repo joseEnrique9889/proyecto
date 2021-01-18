@@ -25,10 +25,10 @@ class ProductoController extends Controller
 
       return view('supervisor.producto.index',compact('productos'));
     }
-    public function create()
+    public function agregar($id)
     {
         $usuarios = User::where('id',Auth::id())->get();
-        $cat= Categoria::orderBy('nombre')->get();
+        $cat= Categoria::findOrFail($id);
        // $this->authorize('haveaccess','producto.create');
         return view('supervisor.producto.create',compact('cat','usuarios'));
     }

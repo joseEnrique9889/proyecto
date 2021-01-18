@@ -139,4 +139,5 @@ class CategoriasControler extends Controller
 
         return redirect('categoria');
     }
+    
 }

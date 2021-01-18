@@ -115,5 +115,19 @@ Route::get('usuarios','HomeController@registrado');
 Route::get('usuarios/{usuarios}/historial','HomeController@historial');
 
 Route::get('contador','HomeController@contador');
-
+//ajax correo
 Route::post('/register/check', 'EmailAvailable@check')->name('register.check');
+
+
+//subcategorias
+
+//Route::get('subcategoria','ReservarController@MaterialReservado');
+Route::get('subcategoria/{subcategoria}/subcategoria','SubCategoriaController@subcategoria');
+Route::get('subcat/{subcat}/subcat','SubCategoriaController@subcate');
+
+Route::get('subcrear/{subcrear}/create','SubCategoriaController@create');
+
+
+Route::post('subcrear','SubCategoriaController@store');
+Route::get('lista','SubCategoriaController@lista');
+Route::get('categoria/{producto}/agregar','ProductoController@agregar');

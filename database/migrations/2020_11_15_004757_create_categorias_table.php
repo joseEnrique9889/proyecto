@@ -18,6 +18,8 @@ class CreateCategoriasTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('imagen');
+            $table->enum('subcategoria', ['no','si'])->default('no');
+            $table->string('parent_id')->references('id')->on('categorias')->nullable();
             $table->timestamps();
         });
     }

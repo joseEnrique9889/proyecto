@@ -7,7 +7,11 @@
   <div class="inside">
     <form action="{{ url('/producto') }}" method="POST" enctype="multipart/form-data">
       @csrf
-    <center><h3>Añada un producto</h3></center>
+
+    <center><h3>Añadir Producto de la Categoria {{ $cat->nombre }}</h3></center>
+
+   
+
    <div class="form-group">
     <label for="exampleFormControl">Nombre</label>
     <input type="text" name="nombre" class="form-control" id="nombre">
@@ -18,21 +22,28 @@
     <textarea type="text" name="descripcion" class="form-control" id="descripcion"> </textarea> 
   </div>
   <div class="form-group">
-      <label for="email">Categoria</label>
-       <select class="form-control" name="categoria_id" id="categoria_id">
-        @foreach($cat as $categoria)
+      <label for="email">Seleccione la Sub Categoria</label>
+       <select class="form-control" name='categoria_id' id="categoria_id">
+        @foreach($cat->subCategori as $categoria)
+      
          <option value="{{ $categoria->id }}"
+
           @isset($productos->categoria[0]->nombre)
             @if($categoria->nombre == $categoria->categoria[0]->nombre)
             selected 
             @endif
           @endisset
           >{{ $categoria->nombre }}</option>
+          
          @endforeach
        </select>
+
+       
+
+
  <div class="form-group">
-      <label for="email">Usuario</label>
-       <select class="form-control" name="user_id" id="user_id">
+      <label for="email"></label>
+       <select class="form-control" name="user_id" id="user_id" style="visibility:hidden">
         @foreach($usuarios as $usuario)
          <option value="{{ $usuario->id }}"
           @isset($productos->usuario[0]->name)
@@ -65,10 +76,10 @@
   
  
   
-  <center><input class="btn btn-success" type="submit" value="Enviar"></center> 
+  <center><input class="btn btn-success" type="submit" value="Añadir"></center> 
   
 </form>
-<a href="{{ url('/producto') }}"><button class="btn btn-danger">Regresar</button></a>
+
 </div>
   
 

@@ -57,7 +57,7 @@
 </div>        
    @endif 
            @empty  
-                   <h3>Sin Productos Registrado En Esta Categoria</h3>            
+                   <h3>Sin Productos Registrado En Esta SubCategoria</h3>            
                 @endforelse
                 
 
